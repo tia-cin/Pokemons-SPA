@@ -90,7 +90,7 @@ export interface PokemonState {
   detail: Pokemon | null;
   loading: false;
   pokemons: Pokemon[];
-  alerts: Alerts;
+  alerts: string;
 }
 
 // actions interfaces

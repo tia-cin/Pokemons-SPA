@@ -9,7 +9,6 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     dispatch<any>(getPokemons());
-  });
-  console.log(pokemons);
-  return <div>{}</div>;
+  }, [dispatch]);
+  return <div></div>;
 };

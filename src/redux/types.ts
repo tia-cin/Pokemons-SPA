@@ -9,13 +9,6 @@ export const SEARCH = "SEARCH";
 export const LOADING = "LOADING";
 export const SET_ALERT = "SET_ALERT";
 
-// urls
-// https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0
-// https://pokeapi.co/api/v2/move?limit=100000&offset=0
-// https://pokeapi.co/api/v2/pokemon-species?limit=100000&offset=0
-// https://pokeapi.co/api/v2/type
-// https://pokeapi.co/api/v2/item?limit=100000&offset=0
-
 // data interfaces
 export interface Alerts {
   message: string;

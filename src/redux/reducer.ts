@@ -1,4 +1,4 @@
-import { PokemonState, Actions } from "./types";
+import { PokemonState, Actions, GET_POKEMONS } from "./types";
 
 const initialState: PokemonState = {
   moves: [],
@@ -16,6 +16,11 @@ export const reducer = (
   action: Actions
 ): PokemonState => {
   switch (action.type) {
+    case GET_POKEMONS:
+      return {
+        ...state,
+        pokemons: action.payload,
+      };
     default:
       return state;
   }

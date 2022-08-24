@@ -7,7 +7,8 @@ import {
   getPokemons,
   getSpecies,
   getTypes,
-} from "../redux/apiCalls";
+} from "../redux/actions/getInfo";
+import { searchPokemons } from "../redux/actions/actions";
 
 export const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ export const Home: React.FC = () => {
     dispatch<any>(getSpecies());
     dispatch<any>(getTypes());
     dispatch<any>(getItems());
+    dispatch<any>(searchPokemons("pik"));
   }, [dispatch]);
+
+  console.log(pokemons);
   return <div></div>;
 };

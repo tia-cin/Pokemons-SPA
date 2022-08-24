@@ -6,6 +6,9 @@ import {
   GET_SPECIES,
   GET_TYPES,
   GET_ITEMS,
+  SET_ALERT,
+  LOADING,
+  SEARCH,
 } from "./types";
 
 const initialState: PokemonState = {
@@ -28,26 +31,46 @@ export const reducer = (
       return {
         ...state,
         pokemons: action.payload,
+        loading: false,
       };
     case GET_MOVES:
       return {
         ...state,
         moves: action.payload,
+        loading: false,
       };
     case GET_SPECIES:
       return {
         ...state,
         species: action.payload,
+        loading: false,
       };
     case GET_TYPES:
       return {
         ...state,
         types: action.payload,
+        loading: false,
       };
     case GET_ITEMS:
       return {
         ...state,
         items: action.payload,
+        loading: false,
+      };
+    case SET_ALERT:
+      return {
+        ...state,
+        alerts: action.payload,
+      };
+    case LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case SEARCH:
+      return {
+        ...state,
+        pokemons: action.payload,
       };
     default:
       return state;

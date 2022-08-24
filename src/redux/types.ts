@@ -81,8 +81,8 @@ export interface PokemonState {
   types: Type[];
   items: Item[];
   detail: Pokemon | null;
-  loading: false;
-  pokemons: Pokemon[];
+  loading: boolean;
+  pokemons: Pokemon[] | Pokemon;
   alerts: string;
 }
 

@@ -18,7 +18,7 @@ export const loadingAction = (): Actions => {
 };
 
 export const getDetailAction = (
-  pokeID: number
+  pokeID: any
 ): ThunkAction<void, RootState, null, Actions> => {
   return async (dispatch) => {
     try {

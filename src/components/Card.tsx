@@ -1,3 +1,13 @@
 import React from "react";
 
-export const Card = () => {};
+interface CardProps {
+  data: any;
+}
+
+export const Card: React.FC<CardProps> = ({ data }) => {
+  return (
+    <section>
+      <h3>{data.name}</h3>
+    </section>
+  );
+};

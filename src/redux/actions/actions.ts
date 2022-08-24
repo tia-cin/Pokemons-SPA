@@ -1,7 +1,6 @@
 import {
   Actions,
   LOADING,
-  GET_POKEMONS,
   SET_ALERT,
   Pokemon,
   SEARCH,
@@ -76,11 +75,19 @@ export const searchPokemons = (
 
       const response = await res.data;
 
-      const final = response.results.filter((r: any) => r.name.includes(input));
+      const filtered = response.results.filter((r: any) =>
+        r.name.includes(input)
+      );
+
+      const call = filtered.map((r: any) => axios.get(r.url));
+
+      const final = await axios.all(call);
+
+      const all = final.map((f: any) => f.data);
 
       dispatch({
         type: SEARCH,
-        payload: final,
+        payload: all,
       });
 
       dispatch({

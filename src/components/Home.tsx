@@ -29,6 +29,11 @@ export const Home: React.FC = () => {
     dispatch<any>(getDetailAction(3));
   }, [dispatch]);
 
-  console.log(detail);
+  console.log("pokemons", pokemons);
+  console.log("moves", moves);
+  console.log("species", species);
+  console.log("types", types);
+  console.log("items", items);
+  console.log("detail",detail);
   return <div></div>;
 };

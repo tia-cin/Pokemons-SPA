@@ -7,12 +7,7 @@ import {
   GET_POKEMONS,
   GET_SPECIES,
   GET_TYPES,
-  Item,
-  Move,
-  Pokemon,
   SET_ALERT,
-  Species,
-  Type,
 } from "../types";
 
 const axios = require("axios");
@@ -33,11 +28,15 @@ export const getPokemons = (): ThunkAction<void, RootState, null, Actions> => {
         throw new Error();
       }
 
-      const response: Pokemon[] = await res.data;
+      const response = await res.data.results.map((r: any) => axios.get(r.url));
+
+      const final = await axios.all(response);
+
+      const all = final.map((f: any) => f.data);
 
       dispatch({
         type: GET_POKEMONS,
-        payload: response,
+        payload: all,
       });
 
       dispatch({
@@ -69,11 +68,15 @@ export const getMoves = (): ThunkAction<void, RootState, null, Actions> => {
         throw new Error();
       }
 
-      const response: Move[] = await res.data;
+      const response = await res.data.results.map((r: any) => axios.get(r.url));
+
+      const final = await axios.all(response);
+
+      const all = final.map((f: any) => f.data);
 
       dispatch({
         type: GET_MOVES,
-        payload: response,
+        payload: all,
       });
 
       dispatch({
@@ -105,11 +108,15 @@ export const getSpecies = (): ThunkAction<void, RootState, null, Actions> => {
         throw new Error();
       }
 
-      const response: Species[] = await res.data;
+      const response = await res.data.results.map((r: any) => axios.get(r.url));
+
+      const final = await axios.all(response);
+
+      const all = final.map((f: any) => f.data);
 
       dispatch({
         type: GET_SPECIES,
-        payload: response,
+        payload: all,
       });
 
       dispatch({
@@ -139,11 +146,15 @@ export const getTypes = (): ThunkAction<void, RootState, null, Actions> => {
         throw new Error();
       }
 
-      const response: Type[] = await res.data;
+      const response = await res.data.results.map((r: any) => axios.get(r.url));
+
+      const final = await axios.all(response);
+
+      const all = final.map((f: any) => f.data);
 
       dispatch({
         type: GET_TYPES,
-        payload: response,
+        payload: all,
       });
 
       dispatch({
@@ -175,11 +186,15 @@ export const getItems = (): ThunkAction<void, RootState, null, Actions> => {
         throw new Error();
       }
 
-      const response: Item[] = await res.data;
+      const response = await res.data.results.map((r: any) => axios.get(r.url));
+
+      const final = await axios.all(response);
+
+      const all = final.map((f: any) => f.data);
 
       dispatch({
         type: GET_ITEMS,
-        payload: response,
+        payload: all,
       });
 
       dispatch({

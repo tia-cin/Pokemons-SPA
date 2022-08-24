@@ -11,7 +11,7 @@ import {
 import { getDetailAction, searchPokemons } from "../../redux/actions/actions";
 import { Footer } from "../Footer";
 
-export const Home: React.FC = () => {
+export const Pokemons: React.FC = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state: RootState) => state.pokemons);
   const moves = useSelector((state: RootState) => state.moves);

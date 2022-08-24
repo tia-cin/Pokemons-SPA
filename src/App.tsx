@@ -1,8 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./components/Pages/Home";
+import { Pokemons } from "./components/Pages/Pokemons";
 import { Landing } from "./components/Pages/Landing";
 import { Navbar } from "./components/Navbar";
+import { Moves } from "./components/Pages/Moves";
+import { Types } from "./components/Pages/Types";
+import { Items } from "./components/Pages/Items";
+import { Detail } from "./components/Pages/Detail";
 
 export const App: React.FC = () => {
   return (
@@ -11,7 +15,11 @@ export const App: React.FC = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/pokemons" element={<Pokemons />} />
+          <Route path="/moves" element={<Moves />} />
+          <Route path="/types" element={<Types />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/pokemon/:id" element={<Detail />} />
         </Routes>
       </div>
     </BrowserRouter>

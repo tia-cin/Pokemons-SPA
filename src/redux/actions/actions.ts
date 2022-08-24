@@ -5,6 +5,7 @@ import {
   SET_ALERT,
   Pokemon,
   SEARCH,
+  GET_DETAIL,
 } from "../types";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../store";
@@ -38,7 +39,7 @@ export const getDetailAction = (
       const response: Pokemon = await res.data;
 
       dispatch({
-        type: SEARCH,
+        type: GET_DETAIL,
         payload: response,
       });
 

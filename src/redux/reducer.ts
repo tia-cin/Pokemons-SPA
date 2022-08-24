@@ -9,6 +9,7 @@ import {
   SET_ALERT,
   LOADING,
   SEARCH,
+  GET_DETAIL,
 } from "./types";
 
 const initialState: PokemonState = {
@@ -71,6 +72,12 @@ export const reducer = (
       return {
         ...state,
         pokemons: action.payload,
+      };
+    case GET_DETAIL:
+      return {
+        ...state,
+        loading: false,
+        detail: action.payload,
       };
     default:
       return state;

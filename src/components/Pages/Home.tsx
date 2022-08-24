@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { RootState } from "../redux/store";
+import { RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getItems,
@@ -7,8 +7,9 @@ import {
   getPokemons,
   getSpecies,
   getTypes,
-} from "../redux/actions/getInfo";
-import { getDetailAction, searchPokemons } from "../redux/actions/actions";
+} from "../../redux/actions/getInfo";
+import { getDetailAction, searchPokemons } from "../../redux/actions/actions";
+import { Footer } from "../Footer";
 
 export const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,11 @@ export const Home: React.FC = () => {
   console.log("species", species);
   console.log("types", types);
   console.log("items", items);
-  console.log("detail",detail);
-  return <div></div>;
+  console.log("detail", detail);
+  return (
+    <div>
+      Home
+      <Footer />
+    </div>
+  );
 };

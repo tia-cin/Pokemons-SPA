@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home";
-import { Landing } from "./components/Landing";
+import { Home } from "./components/Pages/Home";
+import { Landing } from "./components/Pages/Landing";
 import { Navbar } from "./components/Navbar";
 
 export const App: React.FC = () => {

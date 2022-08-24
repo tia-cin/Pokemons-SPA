@@ -7,6 +7,7 @@ import { Moves } from "./components/Pages/Moves";
 import { Types } from "./components/Pages/Types";
 import { Items } from "./components/Pages/Items";
 import { Detail } from "./components/Pages/Detail";
+import { Species } from "./components/Pages/Species";
 
 export const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ export const App: React.FC = () => {
           <Route path="/moves" element={<Moves />} />
           <Route path="/types" element={<Types />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/species" element={<Species />} />
           <Route path="/pokemon/:id" element={<Detail />} />
         </Routes>
       </div>

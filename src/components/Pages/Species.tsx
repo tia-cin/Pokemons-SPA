@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpecies } from "../../redux/actions/getInfo";
 import { RootState } from "../../redux/store";
+import { Pagination } from "../Pagination";
 
 export const Species: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,5 +15,9 @@ export const Species: React.FC = () => {
 
   console.log(species);
 
-  return <div>species</div>;
+  return (
+    <div>
+      <Pagination array={species} />
+    </div>
+  );
 };

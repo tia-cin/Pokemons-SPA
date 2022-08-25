@@ -15,9 +15,7 @@ export const Pagination: React.FC<PaginationProps> = ({ array }) => {
   const itemsPerPage = 9;
   const numberOfItems = page * itemsPerPage;
 
-  const displayItems = array
-    .slice(numberOfItems, numberOfItems + itemsPerPage)
-    .map((i) => <Container content={i} />);
+  const displayItems = array.slice(numberOfItems, numberOfItems + itemsPerPage);
 
   const totalPages = Math.ceil(array.length / itemsPerPage);
 
@@ -27,7 +25,7 @@ export const Pagination: React.FC<PaginationProps> = ({ array }) => {
 
   return (
     <div>
-      {displayItems}
+      <Container content={displayItems} />
       <ReactPaginate
         previousLabel={"<"}
         nextLabel={">"}

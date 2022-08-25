@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Move, Pokemon } from "../redux/types";
+import { Move, Pokemon } from "../../redux/types";
 
 interface CardProps {
   data: any;
@@ -33,18 +33,31 @@ export const Card: React.FC<CardProps> = ({ data }) => {
       },
     },
   };
-
+  const move: Move = {
+    accuracy: data.accuracy,
+    name: data.name,
+    power: data.power,
+    pp: data.pp,
+    priority: data.priority,
+    damageClass: data.damageClass,
+    type: data.type,
+  };
   return (
     <section>
-      <div>
-        <img src={pokemon.sprites.back_default} alt="" />
-      </div>
-      <div>
-        <img src={pokemon.sprites.front_default} alt="" />
-      </div>
-      <Link to={`/pokemon/${data.id}`}>
-        <h3>{data.name}</h3>
-      </Link>
+      {pokemon.sprites && (
+        <div>
+          <div>
+            <img src={pokemon.sprites.back_default} alt="" />
+          </div>
+          <div>
+            <img src={pokemon.sprites.front_default} alt="" />
+          </div>
+          <Link to={`/pokemon/${data.id}`}>
+            <h3>{data.name}</h3>
+          </Link>
+        </div>
+      )}
+      {move && <div>{move.name}</div>}
     </section>
   );
 };

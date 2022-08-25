@@ -1,6 +1,6 @@
 import React from "react";
 import { Item, Move, Pokemon, Species, Type } from "../redux/types";
-import { Card } from "./Card";
+import { Card } from "./Card/Card";
 
 interface ContainerProps {
   content: any;

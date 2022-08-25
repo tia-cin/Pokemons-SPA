@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Pokemon, Move, Type, Item, Species } from "../redux/types";
 
 import ReactPaginate from "react-paginate";
-import { PokemonCard } from "./PokemonCard";
 import { Container } from "./Container";
 
 interface PaginationProps {

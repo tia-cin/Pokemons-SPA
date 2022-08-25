@@ -21,7 +21,6 @@ export interface Pokemon {
   baseExperience: number;
   id: number;
   abilities: Array<string>;
-  species: Species;
   sprites: {
     back_default: string;
     front_default: string;

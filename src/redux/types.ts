@@ -25,9 +25,19 @@ export interface Pokemon {
   species: Species;
   types: Type[];
   items: Item[];
-  images: {
-    front: string;
-    back: string;
+  sprites: {
+    back_default: string;
+    front_default: string;
+    versions: {
+      ["generation-v"]: {
+        ["black-white"]: {
+          animated: {
+            back_default: string | undefined;
+            front_default: string | undefined;
+          };
+        };
+      };
+    };
   };
 }
 

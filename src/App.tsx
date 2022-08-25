@@ -8,6 +8,7 @@ import { Types } from "./components/Pages/Types";
 import { Items } from "./components/Pages/Items";
 import { Detail } from "./components/Pages/Detail";
 import { Species } from "./components/Pages/Species";
+import { Footer } from "./components/Footer";
 
 export const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ export const App: React.FC = () => {
           <Route path="/pokemon/:id" element={<Detail />} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };

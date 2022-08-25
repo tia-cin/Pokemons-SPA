@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../../redux/actions/getInfo";
-import { Footer } from "../Footer";
 import { SearchBar } from "../SearchBar";
 import { Card } from "../Card";
+import { Pagination } from "../Pagination";
 
 export const Pokemons: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,11 +19,7 @@ export const Pokemons: React.FC = () => {
     <div>
       Pokemons
       <SearchBar />
-      <div>
-        {Array.isArray(pokemons) &&
-          pokemons.map((p) => <Card key={p.id} data={p} />)}
-      </div>
-      <Footer />
+      <div>{Array.isArray(pokemons) && <Pagination array={pokemons} />}</div>
     </div>
   );
 };

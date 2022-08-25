@@ -21,10 +21,7 @@ export interface Pokemon {
   baseExperience: number;
   id: number;
   abilities: Array<string>;
-  moves: Move[];
   species: Species;
-  types: Type[];
-  items: Item[];
   sprites: {
     back_default: string;
     front_default: string;
@@ -92,7 +89,7 @@ export interface PokemonState {
   items: Item[];
   detail: Pokemon | null;
   loading: boolean;
-  pokemons: Pokemon[] | Pokemon;
+  pokemons: Pokemon[];
   alerts: string;
 }
 
@@ -129,7 +126,7 @@ interface GetDetailAction {
 
 interface SearchAction {
   type: typeof SEARCH;
-  payload: Pokemon | Pokemon[];
+  payload: Pokemon[];
 }
 
 interface SetAlert {

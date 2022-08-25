@@ -6,7 +6,7 @@ interface CardProps {
   data: Pokemon;
 }
 
-export const Card: React.FC<CardProps> = ({ data }) => {
+export const PokemonCard: React.FC<CardProps> = ({ data }) => {
   const pathFront =
     data.sprites.versions["generation-v"]["black-white"].animated
       .front_default || data.sprites.front_default;

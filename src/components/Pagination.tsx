@@ -1,28 +1,29 @@
 import React, { useState } from "react";
-import { Pokemon } from "../redux/types";
+import { Pokemon, Move, Type, Item, Species } from "../redux/types";
 
 import ReactPaginate from "react-paginate";
-import { Card } from "./Card";
+import { PokemonCard } from "./PokemonCard";
+import { Container } from "./Container";
 
 interface PaginationProps {
-  array: Pokemon[];
+  array: Pokemon[] | Move[] | Type[] | Item[] | Species[];
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ array }) => {
   const [page, setPage] = useState(0);
+
   const itemsPerPage = 9;
   const numberOfItems = page * itemsPerPage;
+
   const displayItems = array
     .slice(numberOfItems, numberOfItems + itemsPerPage)
-    .map((i) => <Card data={i} />);
+    .map((i) => <Container content={i} />);
 
   const totalPages = Math.ceil(array.length / itemsPerPage);
 
   const changePage = (e: any) => {
     setPage(e.selected);
   };
-
-  console.log(displayItems);
 
   return (
     <div>

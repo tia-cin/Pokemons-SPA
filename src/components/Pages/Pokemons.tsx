@@ -3,7 +3,6 @@ import { RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../../redux/actions/getInfo";
 import { SearchBar } from "../SearchBar";
-import { Card } from "../Card";
 import { Pagination } from "../Pagination";
 
 export const Pokemons: React.FC = () => {
@@ -19,7 +18,9 @@ export const Pokemons: React.FC = () => {
     <div>
       Pokemons
       <SearchBar />
-      <div>{Array.isArray(pokemons) && <Pagination array={pokemons} />}</div>
+      <div>
+        <Pagination array={pokemons} />
+      </div>
     </div>
   );
 };

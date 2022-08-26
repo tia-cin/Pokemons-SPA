@@ -137,6 +137,8 @@ interface SetLoading {
   type: typeof LOADING;
 }
 
+export type Data = Pokemon | Move | Type | Species | Item;
+
 export type Actions =
   | GetPokemonsAction
   | GetMovesAction

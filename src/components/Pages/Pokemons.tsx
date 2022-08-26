@@ -23,6 +23,7 @@ export const Pokemons: React.FC = () => {
   const changePage = (e: any): void => {
     setPage(e.selected);
   };
+
   useEffect(() => {
     dispatch<any>(getPokemons());
   }, [dispatch]);
@@ -38,22 +39,7 @@ export const Pokemons: React.FC = () => {
             <div key={e.id}>
               <div>
                 <div>
-                  <img
-                    src={
-                      e.sprites.versions["generation-v"]["black-white"].animated
-                        .back_default
-                    }
-                    alt="pokemon-back"
-                  />
-                </div>
-                <div>
-                  <img
-                    src={
-                      e.sprites.versions["generation-v"]["black-white"].animated
-                        .front_default
-                    }
-                    alt="pokemon-front"
-                  />
+                  <img src={e.sprites.front_default} alt="pokemon-back" />
                 </div>
               </div>
               <div>

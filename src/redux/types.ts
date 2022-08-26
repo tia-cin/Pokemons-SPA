@@ -20,7 +20,12 @@ export interface Pokemon {
   height: number;
   base_experience: number;
   id: number;
-  abilities: Array<string>;
+  abilities: Array<{ ability: { name: string; url: string }; slot: number }>;
+  held_items: Item[];
+  location_area_encounters: string;
+  moves: Move[];
+  order: number;
+  stats: Array<{ base_stat: number; effort: number; stat: string }>;
   sprites: {
     back_default: string;
     front_default: string;

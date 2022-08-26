@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Pokemon, Move, Type, Item, Species } from "../redux/types";
 
 import ReactPaginate from "react-paginate";
-import { Container } from "./Container";
 
 interface PaginationProps {
-  array: Pokemon[] | Move[] | Type[] | Item[] | Species[];
+  array: any;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({ array }) => {
@@ -24,7 +22,7 @@ export const Pagination: React.FC<PaginationProps> = ({ array }) => {
 
   return (
     <div>
-      <Container content={displayItems} />
+      <section>{displayItems}</section>
       <ReactPaginate
         previousLabel={"<"}
         nextLabel={">"}

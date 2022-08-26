@@ -6,6 +6,7 @@ import { getPokemons } from "../../redux/actions/getInfo";
 import { SearchBar } from "../SearchBar";
 
 import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
 
 export const Pokemons: React.FC = () => {
   const { pokemons } = useSelector((state: RootState) => state);
@@ -35,7 +36,46 @@ export const Pokemons: React.FC = () => {
         <section>
           {displayItems.map((e) => (
             <div key={e.id}>
-              <h3>{e.name}</h3>
+              <div>
+                <div>
+                  <img
+                    src={
+                      e.sprites.versions["generation-v"]["black-white"].animated
+                        .back_default
+                    }
+                    alt="pokemon-back"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={
+                      e.sprites.versions["generation-v"]["black-white"].animated
+                        .front_default
+                    }
+                    alt="pokemon-front"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3>{e.name}</h3>
+                <div>
+                  <div>
+                    <p>Base Experience:</p>
+                    <p>Height:</p>
+                    <p>Weight:</p>
+                  </div>
+                  <div>
+                    <p>{e.base_experience}</p>
+                    <p>{e.height}</p>
+                    <p>{e.weight}</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <Link to={`/pokemon/${e.id}`}>
+                  <button>Catch It!</button>
+                </Link>
+              </div>
             </div>
           ))}
         </section>

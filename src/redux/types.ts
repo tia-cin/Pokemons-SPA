@@ -18,7 +18,7 @@ export interface Pokemon {
   name: string;
   weight: number;
   height: number;
-  baseExperience: number;
+  base_experience: number;
   id: number;
   abilities: Array<string>;
   sprites: {

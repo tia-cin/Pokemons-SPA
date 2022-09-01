@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Pokemons } from "./components/Pages/Pokemons";
-import { Landing } from "./components/Pages/Landing";
+import { Pokemons } from "./components/Pokemons";
+import { Landing } from "./components/Landing";
 import { Navbar } from "./components/Navbar";
 import { Detail } from "./components/Detail";
 import { Footer } from "./components/Footer";

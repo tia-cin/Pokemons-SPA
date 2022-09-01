@@ -30,7 +30,6 @@ export interface Pokemon {
       version: { name: string };
     }>;
   }>;
-  location_area_encounters: string;
   moves: Array<{
     move: {
       name: string;

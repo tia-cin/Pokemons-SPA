@@ -1,10 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../store";
-import {
-  Actions,
-  GET_POKEMONS,
-  SET_ALERT,
-} from "../types";
+import { Actions, GET_POKEMONS, Pokemon, SET_ALERT } from "../types";
 
 const axios = require("axios");
 
@@ -24,7 +20,9 @@ export const getPokemons = (): ThunkAction<void, RootState, null, Actions> => {
         throw new Error();
       }
 
-      const response = await res.data.results.map((r: any) => axios.get(r.url));
+      const response: Pokemon = await res.data.results.map((r: any) =>
+        axios.get(r.url)
+      );
 
       const final = await axios.all(response);
 

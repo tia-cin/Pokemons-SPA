@@ -9,16 +9,18 @@ import { Footer } from "./components/Footer";
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/pokemons" element={<Pokemons />} />
-          <Route path="/pokemon/:id" element={<Detail />} />
-        </Routes>
-      </div>
-      <Footer />
-    </BrowserRouter>
+    <div className="app-container">
+      <BrowserRouter>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/pokemons" element={<Pokemons />} />
+            <Route path="/pokemon/:id" element={<Detail />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
 };

@@ -1,4 +1,5 @@
 import "./styles/Pokemon.css";
+import title from "../assets/pokemon-title.png";
 import React, { useEffect, useState } from "react";
 import { RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +31,9 @@ export const Pokemons: React.FC = () => {
   console.log("pokemons", pokemons);
   return (
     <div>
-      Pokemons
+      <div>
+        <img src={title} alt="pokemon-gotta-catch-them-all" />
+      </div>
       <SearchBar />
       <div>
         <section>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getDetailAction } from "../../redux/actions/actions";
-import { RootState } from "../../redux/store";
+import { getDetailAction } from "../redux/actions/actions";
+import { RootState } from "../redux/store";
 
 export const Detail: React.FC = () => {
   const dispatch = useDispatch();

@@ -2,10 +2,6 @@ import {
   PokemonState,
   Actions,
   GET_POKEMONS,
-  GET_MOVES,
-  GET_SPECIES,
-  GET_TYPES,
-  GET_ITEMS,
   SET_ALERT,
   LOADING,
   SEARCH,
@@ -13,10 +9,6 @@ import {
 } from "./types";
 
 const initialState: PokemonState = {
-  moves: [],
-  species: [],
-  types: [],
-  items: [],
   detail: null,
   loading: false,
   pokemons: [],
@@ -32,30 +24,6 @@ export const reducer = (
       return {
         ...state,
         pokemons: action.payload,
-        loading: false,
-      };
-    case GET_MOVES:
-      return {
-        ...state,
-        moves: action.payload,
-        loading: false,
-      };
-    case GET_SPECIES:
-      return {
-        ...state,
-        species: action.payload,
-        loading: false,
-      };
-    case GET_TYPES:
-      return {
-        ...state,
-        types: action.payload,
-        loading: false,
-      };
-    case GET_ITEMS:
-      return {
-        ...state,
-        items: action.payload,
         loading: false,
       };
     case SET_ALERT:

@@ -17,7 +17,7 @@ export const Detail: React.FC = () => {
 
   useEffect(() => {
     dispatch<any>(getDetailAction(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   console.log(detail);
 

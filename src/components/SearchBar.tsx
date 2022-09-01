@@ -1,3 +1,4 @@
+import "./styles/SearchBar.css";
 import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPokemons } from "../redux/actions/actions";

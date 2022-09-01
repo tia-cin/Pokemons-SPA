@@ -1,10 +1,9 @@
+import "./styles/Pokemon.css";
 import React, { useEffect, useState } from "react";
 import { RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getPokemons } from "../redux/actions/getInfo";
 import { SearchBar } from "./SearchBar";
-
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 

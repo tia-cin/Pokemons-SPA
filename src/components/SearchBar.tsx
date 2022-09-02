@@ -14,13 +14,13 @@ export const SearchBar: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search">
       <input
         type="text"
         placeholder="Seach"
         onChange={(e) => setInput(e.target.value)}
       />
-      <button type="submit">Search</button>
+      <button type="submit">Go</button>
     </form>
   );
 };

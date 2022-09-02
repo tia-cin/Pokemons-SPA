@@ -13,7 +13,8 @@
     grid-area: image;
 }
 .name {
-    grid-area: name;
+       grid-area: name;
+       color: var(--white);
 }
 .type {
     grid-area: type;

@@ -31,7 +31,7 @@ export const Pokemons: React.FC = () => {
   console.log("pokemons", pokemons);
   return (
     <div className="page-continer" id="pokemons">
-      <div className="image-container">
+      <div>
         <img
           src={title}
           id="pokemon-gotta-catch-them-all"
@@ -49,9 +49,10 @@ export const Pokemons: React.FC = () => {
         </div>
         <ReactPaginate
           activeClassName="pagination-active"
-          nextClassName="pagination-buttons next"
+          disabledClassName="pagination-disable"
+          nextClassName="pagination-buttons"
           pageClassName="pagination-page"
-          previousClassName="pagination-buttons prev"
+          previousClassName="pagination-buttons"
           containerClassName="pagination"
           breakClassName="pagination-breack"
           previousLabel={"<"}

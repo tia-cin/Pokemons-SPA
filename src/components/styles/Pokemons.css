@@ -1,5 +1,6 @@
 #pokemon-gotta-catch-them-all {
     width: 20em;
+    margin: 5em 0
 }
 
 #pokemons {
@@ -10,8 +11,38 @@
 }
 
 .grid {
+    margin: 2em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2em 10em;
 }
 
+.pagination {
+    list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 3em 0;
+}
+.pagination-buttons {
+    background-color: var(--dark);
+    color: var(--white);
+    border-radius: 2em;
+    padding: .5em;
+    margin: 0 2em;
+    font-weight: bold;
+}
+.pagination-page {
+    background-color: var(--dark);
+    text-align: center;
+    margin: 0 .5em;
+    padding: .5em;
+    border-radius: 2em;
+    color: var(--white);
+}
+.pagination-disable {
+    background-color: var(--da);
+}
+.pagination-active {
+    background-color: var(--light);
+    color: var(--black);
+}

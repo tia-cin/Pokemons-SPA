@@ -11,14 +11,7 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
-    gap: 2em 20em;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em 10em;
 }
 
-.pokemon-image {
-    width: 10em;
-}
-
-.btn-catch {
-    background-color: var(--red);
-}

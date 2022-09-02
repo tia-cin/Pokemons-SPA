@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../redux/actions/getInfo";
 import { SearchBar } from "./SearchBar";
 import ReactPaginate from "react-paginate";
-import { Link } from "react-router-dom";
 import { Card } from "./Card";
 
 export const Pokemons: React.FC = () => {

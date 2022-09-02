@@ -13,6 +13,9 @@ a, button {
     cursor: pointer;
     text-decoration: none;
 }
+p,h1,h2,h3,h4,h5,h6 {
+    cursor:default;
+}
 
 .jc-sb {
     justify-content: space-between;

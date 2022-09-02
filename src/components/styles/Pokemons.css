@@ -23,15 +23,11 @@
   justify-content: center;
   margin: 3em 0;
 }
-.pagination-buttons {
-    background-color: var(--dark);
-    color: var(--white);
-    border-radius: 2em;
-    padding: .5em;
-    margin: 0 2em;
+.pagination-buttons  {
+    margin: 0 3em !important; 
     font-weight: bold;
 }
-.pagination-page {
+.pages {
     background-color: var(--dark);
     text-align: center;
     margin: 0 .5em;
@@ -40,7 +36,7 @@
     color: var(--white);
 }
 .pagination-disable {
-    background-color: var(--da);
+    background-color: transparent;
 }
 .pagination-active {
     background-color: var(--light);

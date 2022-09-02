@@ -31,6 +31,10 @@
 .button img {
     width: 2em;
 }
+.button:hover div {
+    background-color: var(--grey);
+    transition: .5s;
+}
 .button div {
     background-color: var(--black);
     border-radius: 2em;

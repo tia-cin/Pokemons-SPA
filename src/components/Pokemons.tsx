@@ -50,11 +50,11 @@ export const Pokemons: React.FC = () => {
         <ReactPaginate
           activeClassName="pagination-active"
           disabledClassName="pagination-disable"
-          nextClassName="pagination-buttons"
-          pageClassName="pagination-page"
-          previousClassName="pagination-buttons"
+          nextClassName="pages pagination-buttons"
+          pageClassName="pages"
+          previousClassName="pages pagination-buttons"
           containerClassName="pagination"
-          breakClassName="pagination-breack"
+          breakClassName="pages b"
           previousLabel={"<"}
           nextLabel={">"}
           pageCount={totalPages}

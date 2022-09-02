@@ -1,3 +1,9 @@
 #pokeball-logo {
     width: 3em;
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}

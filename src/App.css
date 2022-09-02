@@ -3,6 +3,16 @@
     flex-direction: row;
 }
 
+.links {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: bold;
+}
+
+a, button {
+    cursor: pointer;
+}
+
 .jc-sb {
     justify-content: space-between;
 }

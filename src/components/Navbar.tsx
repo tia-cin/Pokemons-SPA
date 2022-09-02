@@ -7,14 +7,20 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="flex-row jc-sb">
       <div className="item image-container">
-        <img src={logo} alt="pokeball-logo" id="pokeball-logo" />
+        <Link to="/">
+          <img src={logo} alt="pokeball-logo" id="pokeball-logo" />
+        </Link>
       </div>
       <div className="item flex-row">
-        <div className="item">
-          <Link to="/">Home</Link>
+        <div className="item ">
+          <Link to="/pokemons" className="links">
+            Pokemons
+          </Link>
         </div>
-        <div className="item">
-          <Link to="/pokemons">Pokemons</Link>
+        <div className="item ">
+          <Link to="/about" className="links">
+            About
+          </Link>
         </div>
       </div>
     </nav>

@@ -5,6 +5,7 @@
 #landing {
     background-color: var(--light);
     align-items: center;
+    padding: 7em 0;
 }
 
 .text-container {
@@ -14,13 +15,13 @@
 .big-titles {
     font-size: 4em;
     transform: translateY(-1.5em);
-    color: #f9f0f0;
+    color: var(--white);
 }
 
 .descriptions {
     font-size: 2em;
     transform: translateY(-2.5em);
-    color: #f9f0f0;
+    color: var(--white);
 }
 
 .buttons {
@@ -28,7 +29,7 @@
     font-size: 1.5em;
     background-color: var(--medium);
     border: none;
-    color: #f9f0f0;
+    color: var(--white);
     font-weight: bold;
     border-radius: 2em;
     transform: translateY(-1.5em);

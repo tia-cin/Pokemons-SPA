@@ -23,7 +23,7 @@ export const Detail: React.FC = () => {
   console.log(detail);
 
   return (
-    <div>
+    <div className="page-container" id="detail">
       {detail && (
         <div>
           <header>

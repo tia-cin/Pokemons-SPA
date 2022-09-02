@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 
 export const Landing: React.FC = () => {
   return (
-    <div>
-      <div>
-        <h1>Pokemon Guide</h1>
-        <p>Discover the Pokemon World</p>
-        <Link to="/pokemons">
-          <button>Go</button>
+    <div className="page-container container" id="landing">
+      <div className="item">
+        <h1 className="big-titles">Pokemon Guide</h1>
+        <p className="descriptions">Discover the Pokemon World</p>
+        <Link to="/pokemons" className="links">
+          <button className="buttons">Go</button>
         </Link>
       </div>
-      <div>
-        <img src={image} alt="ash-and-pikachu" />
+      <div className="item">
+        <img src={image} alt="ash-and-pikachu" id="ash-and-pikachu" />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import "./styles/Pokemon.css";
+import "./styles/Pokemons.css";
 import title from "../assets/pokemon-title.png";
 import React, { useEffect, useState } from "react";
 import { RootState } from "../redux/store";
@@ -30,9 +30,13 @@ export const Pokemons: React.FC = () => {
 
   console.log("pokemons", pokemons);
   return (
-    <div>
-      <div>
-        <img src={title} alt="pokemon-gotta-catch-them-all" />
+    <div className="page-continer" id="pokemons">
+      <div className="image-container">
+        <img
+          src={title}
+          id="pokemon-gotta-catch-them-all"
+          alt="pokemon-gotta-catch-them-all"
+        />
       </div>
       <SearchBar />
       <div>

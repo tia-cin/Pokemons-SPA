@@ -5,20 +5,18 @@ import { Link } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
   return (
-    <nav>
-      <header>
-        <div>
-          <img src={logo} alt="pokeball-logo" />
+    <nav className="container">
+      <div className="item image-container">
+        <img src={logo} alt="pokeball-logo" id="pokeball-logo" />
+      </div>
+      <div className="item container">
+        <div className="item">
+          <Link to="/">Home</Link>
         </div>
-        <div>
-          <div>
-            <Link to="/">Home</Link>
-          </div>
-          <div>
-            <Link to="/pokemons">Pokemons</Link>
-          </div>
+        <div className="item">
+          <Link to="/pokemons">Pokemons</Link>
         </div>
-      </header>
+      </div>
     </nav>
   );
 };

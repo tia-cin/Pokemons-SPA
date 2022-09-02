@@ -24,6 +24,10 @@ export const Pokemons: React.FC = () => {
     setPage(e.selected);
   };
 
+  // first letter uppercase
+  const firstLetterUpperCase = (word: string) =>
+    word.charAt(0).toLocaleUpperCase() + word.slice(1);
+
   useEffect(() => {
     dispatch<any>(getPokemons());
   }, [dispatch]);
@@ -38,9 +42,11 @@ export const Pokemons: React.FC = () => {
           alt="pokemon-gotta-catch-them-all"
         />
       </div>
-      <SearchBar />
       <div>
-        <section>
+        <SearchBar />
+      </div>
+      <div>
+        <div className="grid">
           {displayItems.map((e) => (
             <div key={e.id}>
               <div>
@@ -49,18 +55,11 @@ export const Pokemons: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h3>{e.name}</h3>
+                <h3>{e.name.toLocaleUpperCase()}</h3>
                 <div>
-                  <div>
-                    <p>Base Experience:</p>
-                    <p>Height:</p>
-                    <p>Weight:</p>
-                  </div>
-                  <div>
-                    <p>{e.base_experience}</p>
-                    <p>{e.height}</p>
-                    <p>{e.weight}</p>
-                  </div>
+                  {e.types.map((t, i) => (
+                    <p key={i}>{firstLetterUpperCase(t.type.name)}</p>
+                  ))}
                 </div>
               </div>
               <div>
@@ -70,8 +69,14 @@ export const Pokemons: React.FC = () => {
               </div>
             </div>
           ))}
-        </section>
+        </div>
         <ReactPaginate
+          activeClassName="pagination-active"
+          nextClassName="pagination-buttons next"
+          pageClassName="pagination-page"
+          previousClassName="pagination-buttons prev"
+          containerClassName="pagination"
+          breakClassName="pagination-breack"
           previousLabel={"<"}
           nextLabel={">"}
           pageCount={totalPages}

@@ -7,6 +7,7 @@ import { getPokemons } from "../redux/actions/getInfo";
 import { SearchBar } from "./SearchBar";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
+import { Card } from "./Card";
 
 export const Pokemons: React.FC = () => {
   const { pokemons } = useSelector((state: RootState) => state);
@@ -23,10 +24,6 @@ export const Pokemons: React.FC = () => {
   const changePage = (e: any): void => {
     setPage(e.selected);
   };
-
-  // first letter uppercase
-  const firstLetterUpperCase = (word: string) =>
-    word.charAt(0).toLocaleUpperCase() + word.slice(1);
 
   useEffect(() => {
     dispatch<any>(getPokemons());
@@ -47,27 +44,8 @@ export const Pokemons: React.FC = () => {
       </div>
       <div>
         <div className="grid">
-          {displayItems.map((e) => (
-            <div key={e.id}>
-              <div>
-                <div>
-                  <img src={e.sprites.front_default} alt="pokemon-back" />
-                </div>
-              </div>
-              <div>
-                <h3>{e.name.toLocaleUpperCase()}</h3>
-                <div>
-                  {e.types.map((t, i) => (
-                    <p key={i}>{firstLetterUpperCase(t.type.name)}</p>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <Link to={`/pokemon/${e.id}`}>
-                  <button>Catch It!</button>
-                </Link>
-              </div>
-            </div>
+          {displayItems.map((p, i) => (
+            <Card key={i} pokemon={p} />
           ))}
         </div>
         <ReactPaginate

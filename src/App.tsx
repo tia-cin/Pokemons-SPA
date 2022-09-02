@@ -5,7 +5,6 @@ import { Pokemons } from "./components/Pokemons";
 import { Landing } from "./components/Landing";
 import { Navbar } from "./components/Navbar";
 import { Detail } from "./components/Detail";
-import { Footer } from "./components/Footer";
 
 export const App: React.FC = () => {
   return (
@@ -19,7 +18,6 @@ export const App: React.FC = () => {
             <Route path="/pokemon/:id" element={<Detail />} />
           </Routes>
         </main>
-        <Footer />
       </BrowserRouter>
     </div>
   );

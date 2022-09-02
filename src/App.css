@@ -1,8 +1,10 @@
-.container {
+.flex-row {
     display: flex;
     flex-direction: row;
+}
+
+.jc-sb {
     justify-content: space-between;
-    align-items: center;
 }
 
 .item {

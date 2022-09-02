@@ -1,3 +1,35 @@
 #ash-and-pikachu {
     width: 30em;
 }
+
+#landing {
+    background-color: var(--light);
+    align-items: center;
+}
+
+.text-container {
+    margin: 0 5em
+}
+
+.big-titles {
+    font-size: 4em;
+    transform: translateY(-1.5em);
+    color: #f9f0f0;
+}
+
+.descriptions {
+    font-size: 2em;
+    transform: translateY(-2.5em);
+    color: #f9f0f0;
+}
+
+.buttons {
+    padding: .2em 1.5em;
+    font-size: 1.5em;
+    background-color: var(--medium);
+    border: none;
+    color: #f9f0f0;
+    font-weight: bold;
+    border-radius: 2em;
+    transform: translateY(-1.5em);
+}

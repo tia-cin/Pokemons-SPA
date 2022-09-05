@@ -24,6 +24,37 @@ export const Detail: React.FC<DetailProps> = ({
     setTurn(!turn);
   };
 
+  // sprites generation
+  const SpritesGen: React.FC<{ generation: string; data: any }> = ({
+    generation,
+    data,
+  }) => {
+    let keys = Object.keys(data);
+    return (
+      <div>
+        <h5>{generation}</h5>
+        {Array.isArray(keys) ? (
+          keys.map((e, i) => <Sprites key={i} src={data[e]} theme={e} />)
+        ) : (
+          <Sprites src={data[keys]} theme={keys} />
+        )}
+      </div>
+    );
+  };
+
+  // sprites component
+  const Sprites: React.FC<{
+    src: { front_default: string };
+    theme: string;
+  }> = ({ src, theme }) => {
+    return (
+      <div>
+        <img src={src.front_default} alt="pokemon-sprite" />
+        <small>{theme}</small>
+      </div>
+    );
+  };
+
   useEffect(() => {
     dispatch<any>(getDetailAction(id));
   }, [dispatch, id]);
@@ -33,83 +64,90 @@ export const Detail: React.FC<DetailProps> = ({
   return (
     <div className="page-container" id="detail">
       {detail && (
-        <div>
-          <header>
-            <div>
+        <div className="pokemon-container">
+          <div className="titles-container elem">
+            <div className="image-container">
               <img
                 src={
-                  turn
-                    ? detail.sprites.front_default
-                    : detail.sprites.back_default
-                }
-                alt=""
-              />
-            </div>
-            <div>
-              <h1>{detail.name.toLocaleUpperCase()}</h1>
-              <button onClick={handleTurn}>Turn</button>
-            </div>
-            <div>
-              <img
-                src={
-                  turn
-                    ? detail.sprites.versions["generation-v"]["black-white"]
-                        .animated.front_default
-                    : detail.sprites.versions["generation-v"]["black-white"]
-                        .animated.back_default
+                  detail.sprites.versions["generation-v"]["black-white"]
+                    .animated.front_default
                 }
                 alt={`${detail.name}-image`}
               />
             </div>
-          </header>
-          <section>
+            <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>
+            <button className="turn-btn" onClick={handleTurn}>
+              Turn
+            </button>
+          </div>
+          <div className="about-container elem">
+            <h3>About</h3>
+            <p>Weight</p>
+            <small>{detail.weight}</small>
+            <p>Height</p>
+            <small>{detail.height}</small>
+            <p>Base Experience</p>
+            <small>{detail.base_experience}</small>
+            <p>Species</p>
+            <small>{detail.species.name}</small>
+            <p>Order</p>
+            <small>{detail.order}</small>
+          </div>
+          <div className="abilities-container elem">
+            <h3>Abilities</h3>
             <div>
-              <h3>About</h3>
-              <p>Weight</p>
-              <small>{detail.weight}</small>
-              <p>Height</p>
-              <small>{detail.height}</small>
-              <p>Base Experience</p>
-              <small>{detail.base_experience}</small>
-              <p>Species</p>
-              <small>{detail.species.name}</small>
+              {detail.abilities.map((e, i) => (
+                <p key={i}>
+                  {e.ability.name}
+                  <small key={i}>{e.slot}</small>
+                </p>
+              ))}
+              {/*add bolean*/}
             </div>
+          </div>
+          <div className="types-container elem">
+            <h3>Types</h3>
             <div>
-              <h3>Abilities</h3>
-              <div>
-                {detail.abilities.map((e, i) => (
-                  <p key={i}>
-                    {e.ability.name}
-                    <small key={i}>{e.slot}</small>
-                  </p>
-                ))}
-                {/*add bolean*/}
-              </div>
+              {detail.types.map((e, i) => (
+                <p key={i}>
+                  {e.type.name}
+                  <small>{e.slot}</small>
+                </p>
+              ))}
             </div>
+          </div>
+          <div className="stats-container elem">
+            <h3>Stats</h3>
             <div>
-              <h3>Types</h3>
-              <div>
-                {detail.types.map((e, i) => (
-                  <p key={i}>
-                    {e.type.name}
-                    <small>{e.slot}</small>
-                  </p>
-                ))}
-              </div>
+              {detail.stats.map((e, i) => (
+                <p key={i}>
+                  {e.stat.name}
+                  <input type="range" min="0" max="100" value={e.base_stat} />
+                </p>
+              ))}
             </div>
+          </div>
+          <div className="items-container elem">
+            <h3>Items</h3>
             <div>
-              <h3>Stats</h3>
-              <div>
-                {detail.stats.map((e, i) => (
-                  <p key={i}>
-                    {e.stat.name}
-                    <small>{e.base_stat}</small>
-                    <small>{e.effort}</small>
-                  </p>
-                ))}
-              </div>
+              {detail.held_items.map((e, i) => (
+                <p key={i}>{e.item.name}</p>
+              ))}
             </div>
-          </section>
+          </div>
+          <div className="sprites-container elem">
+            <h3>Sprites</h3>
+            <div>
+              <SpritesGen
+                generation="Generation I"
+                data={detail.sprites.versions["generation-i"]}
+              />
+              <SpritesGen
+                generation="Generation II"
+                data={detail.sprites.versions["generation-ii"]}
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>

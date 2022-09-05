@@ -17,6 +17,11 @@ export interface Pokemon {
   base_experience: number;
   id: number;
   order: number;
+  held_items: Array<{
+    item: {
+      name: string;
+    };
+  }>;
   abilities: Array<{
     ability: { name: string };
     is_hidden: boolean;
@@ -27,12 +32,73 @@ export interface Pokemon {
     back_default: string;
     front_default: string;
     versions: {
+      ["generation-i"]: {
+        ["red-blue"]: {
+          front_default: string;
+        };
+        yellow: {
+          front_default: string;
+        };
+      };
+      ["generation-ii"]: {
+        crystal: {
+          front_default: string;
+        };
+        gold: {
+          front_default: string;
+        };
+        silver: {
+          front_default: string;
+        };
+      };
+      ["generation-iii"]: {
+        emerald: {
+          front_default: string;
+        };
+        ["firered-leafgreen"]: {
+          front_default: string;
+        };
+        ["ruby-sapphire"]: {
+          front_default: string;
+        };
+      };
+      ["generation-iv"]: {
+        ["diamond-pearl"]: {
+          front_default: string;
+        };
+        ["heartgold-soulsilver"]: {
+          front_default: string;
+        };
+        platinum: {
+          front_default: string;
+        };
+      };
       ["generation-v"]: {
         ["black-white"]: {
           animated: {
-            back_default: string | undefined;
-            front_default: string | undefined;
+            front_default: string;
           };
+        };
+      };
+      ["generation-vi"]: {
+        ["omegaruby-alphasapphire"]: {
+          front_default: string;
+        };
+        ["x-y"]: {
+          front_default: string;
+        };
+      };
+      ["generation-vii"]: {
+        icons: {
+          front_default: string;
+        };
+        ["ultra-sun-ultra-moon"]: {
+          front_default: string;
+        };
+      };
+      ["genetarion-viii"]: {
+        icons: {
+          front_default: string;
         };
       };
     };

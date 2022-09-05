@@ -1,0 +1,17 @@
+#detail{
+    display: flex;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+.pokemon-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 3em 5em; 
+    grid-template-areas: 
+      "titles-container about-container"
+      "abilities-container types-container"
+      "stats-container items-container"
+      "sprites-container sprites-container"; 
+}

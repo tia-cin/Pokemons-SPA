@@ -49,6 +49,25 @@ export const Detail: React.FC<DetailProps> = ({
     );
   };
 
+  // info component
+  const Info: React.FC<{
+    title: string;
+    text: Array<string>;
+    small: Array<string | number> | null;
+  }> = ({ title, text, small }) => {
+    return (
+      <div>
+        <h3>{title}</h3>
+        {text.map((t, i) => (
+          <p key={i}>
+            {t}
+            {small && <small key={i}>{small[i]}</small>}
+          </p>
+        ))}
+      </div>
+    );
+  };
+
   useEffect(() => {
     dispatch<any>(getDetailAction(id));
   }, [dispatch, id]);
@@ -72,40 +91,31 @@ export const Detail: React.FC<DetailProps> = ({
             <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>
           </div>
           <div className="about-container elem">
-            <h3>About</h3>
-            <p>Weight</p>
-            <small>{detail.weight}</small>
-            <p>Height</p>
-            <small>{detail.height}</small>
-            <p>Base Experience</p>
-            <small>{detail.base_experience}</small>
-            <p>Species</p>
-            <small>{detail.species.name}</small>
-            <p>Order</p>
-            <small>{detail.order}</small>
+            <Info
+              title="About"
+              text={["Weight", "Height", "Base Experience", "Species", "Order"]}
+              small={[
+                detail.weight,
+                detail.height,
+                detail.base_experience,
+                detail.species.name,
+                detail.order,
+              ]}
+            />
           </div>
           <div className="abilities-container elem">
-            <h3>Abilities</h3>
-            <div>
-              {detail.abilities.map((e, i) => (
-                <p key={i}>
-                  {e.ability.name}
-                  <small key={i}>{e.slot}</small>
-                </p>
-              ))}
-              {/*add bolean*/}
-            </div>
+            <Info
+              title="Abilities"
+              text={detail.abilities.map((a) => a.ability.name)}
+              small={detail.abilities.map((a) => a.slot)}
+            />
           </div>
           <div className="types-container elem">
-            <h3>Types</h3>
-            <div>
-              {detail.types.map((e, i) => (
-                <p key={i}>
-                  {e.type.name}
-                  <small>{e.slot}</small>
-                </p>
-              ))}
-            </div>
+            <Info
+              title="Types"
+              text={detail.types.map((t) => t.type.name)}
+              small={detail.types.map((t) => t.slot)}
+            />
           </div>
           <div className="stats-container elem">
             <h3>Stats</h3>
@@ -119,12 +129,11 @@ export const Detail: React.FC<DetailProps> = ({
             </div>
           </div>
           <div className="items-container elem">
-            <h3>Items</h3>
-            <div>
-              {detail.held_items.map((e, i) => (
-                <p key={i}>{e.item.name}</p>
-              ))}
-            </div>
+            <Info
+              title="Items"
+              text={detail.held_items.map((i) => i.item.name)}
+              small={null}
+            />
           </div>
           <div className="sprites-container elem">
             <h3>Sprites</h3>

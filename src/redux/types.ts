@@ -24,7 +24,6 @@ export interface Pokemon {
   }>;
   abilities: Array<{
     ability: { name: string };
-    is_hidden: boolean;
     slot: number;
   }>;
   stats: Array<{ base_stat: number; effort: number; stat: { name: string } }>;

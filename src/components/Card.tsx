@@ -6,13 +6,13 @@ import { Pokemon } from "../redux/types";
 
 interface CardProps {
   pokemon: Pokemon;
+  firstLetterUpperCase: (word: string) => string;
 }
 
-export const Card: React.FC<CardProps> = ({ pokemon }) => {
-  // first letter uppercase
-  const firstLetterUpperCase = (word: string) =>
-    word.charAt(0).toLocaleUpperCase() + word.slice(1);
-
+export const Card: React.FC<CardProps> = ({
+  pokemon,
+  firstLetterUpperCase,
+}) => {
   const typesColors: { [key: string]: any } = {
     bug: "#94bc4a",
     dark: "#736c75",

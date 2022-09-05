@@ -8,7 +8,11 @@ import { SearchBar } from "./SearchBar";
 import ReactPaginate from "react-paginate";
 import { Card } from "./Card";
 
-export const Pokemons: React.FC = () => {
+interface PokemonsProps {
+  firstLetterUpperCase: (word: string) => string;
+}
+
+export const Pokemons: React.FC<PokemonsProps> = ({ firstLetterUpperCase }) => {
   const { pokemons } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   // pagination
@@ -44,7 +48,11 @@ export const Pokemons: React.FC = () => {
       <div>
         <div className="grid">
           {displayItems.map((p, i) => (
-            <Card key={i} pokemon={p} />
+            <Card
+              key={i}
+              pokemon={p}
+              firstLetterUpperCase={firstLetterUpperCase}
+            />
           ))}
         </div>
         <ReactPaginate

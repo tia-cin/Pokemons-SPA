@@ -5,7 +5,11 @@ import { useParams } from "react-router-dom";
 import { getDetailAction } from "../redux/actions/actions";
 import { RootState } from "../redux/store";
 
-export const Detail: React.FC = () => {
+interface DetailProps {
+  firstLetterUpperCase: (word: string) => string;
+}
+
+export const Detail: React.FC<DetailProps> = ({ firstLetterUpperCase }) => {
   const dispatch = useDispatch();
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
@@ -14,6 +18,25 @@ export const Detail: React.FC = () => {
   const [turn, setTurn] = useState(true);
   const handleTurn = (e: any): void => {
     setTurn(!turn);
+  };
+
+  // extra component
+  const ExtraComponent: React.FC<{
+    title: string;
+    value: Array<string> | string | number;
+  }> = ({ title }, { value }) => {
+    return (
+      <div>
+        <h3>{title}</h3>
+        <div>
+          {Array.isArray(value) ? (
+            value.map((v, i) => <p key={i}>{v}</p>)
+          ) : (
+            <p>{value}</p>
+          )}
+        </div>
+      </div>
+    );
   };
 
   useEffect(() => {
@@ -38,11 +61,7 @@ export const Detail: React.FC = () => {
               />
             </div>
             <div>
-              <h1>{detail.name}</h1>
-              <p>Experience: {detail.base_experience}</p>
-              <p>Height: {detail.height}</p>
-              <p>Weight: {detail.weight}</p>
-              <p>Order: {detail.order}</p>
+              <h1>{detail.name.toLocaleUpperCase()}</h1>
               <button onClick={handleTurn}>Turn</button>
             </div>
             <div>
@@ -58,6 +77,12 @@ export const Detail: React.FC = () => {
               />
             </div>
           </header>
+          <section>
+            <ExtraComponent
+              title="Base Experience"
+              value={detail.base_experience}
+            />
+          </section>
         </div>
       )}
     </div>

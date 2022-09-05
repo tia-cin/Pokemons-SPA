@@ -10,9 +10,13 @@ import { Card } from "./Card";
 
 interface PokemonsProps {
   firstLetterUpperCase: (word: string) => string;
+  colors: { [key: string]: any };
 }
 
-export const Pokemons: React.FC<PokemonsProps> = ({ firstLetterUpperCase }) => {
+export const Pokemons: React.FC<PokemonsProps> = ({
+  firstLetterUpperCase,
+  colors,
+}) => {
   const { pokemons } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   // pagination
@@ -49,6 +53,7 @@ export const Pokemons: React.FC<PokemonsProps> = ({ firstLetterUpperCase }) => {
         <div className="grid">
           {displayItems.map((p, i) => (
             <Card
+              colors={colors}
               key={i}
               pokemon={p}
               firstLetterUpperCase={firstLetterUpperCase}

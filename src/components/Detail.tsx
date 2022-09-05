@@ -7,9 +7,13 @@ import { RootState } from "../redux/store";
 
 interface DetailProps {
   firstLetterUpperCase: (word: string) => string;
+  colors: { [key: string]: any };
 }
 
-export const Detail: React.FC<DetailProps> = ({ firstLetterUpperCase }) => {
+export const Detail: React.FC<DetailProps> = ({
+  firstLetterUpperCase,
+  colors,
+}) => {
   const dispatch = useDispatch();
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
@@ -18,19 +22,6 @@ export const Detail: React.FC<DetailProps> = ({ firstLetterUpperCase }) => {
   const [turn, setTurn] = useState(true);
   const handleTurn = (e: any): void => {
     setTurn(!turn);
-  };
-
-  // simple extra component
-  const SimpleComponent: React.FC<{
-    title: string;
-    value: string | number;
-  }> = ({ title, value }) => {
-    return (
-      <div>
-        <h3>{title}</h3>
-        <p>{value}</p>
-      </div>
-    );
   };
 
   useEffect(() => {
@@ -72,35 +63,51 @@ export const Detail: React.FC<DetailProps> = ({ firstLetterUpperCase }) => {
             </div>
           </header>
           <section>
-            <SimpleComponent title="Height" value={detail.height} />
-            <SimpleComponent title="Weight" value={detail.weight} />
-            <SimpleComponent
-              title="Base Experience"
-              value={detail.base_experience}
-            />
-            <SimpleComponent title="Species" value={detail.species.name} />
             <div>
-              <h3>Abilities</h3>
-              {detail.abilities.map((e, i) => (
-                <div key={i}>
-                  <p>{firstLetterUpperCase(e.ability.name)}</p>
-                  <p>{e.slot}</p>
-                  <small>{e.is_hidden}</small>
-                </div>
-              ))}
+              <h3>About</h3>
+              <p>Weight</p>
+              <small>{detail.weight}</small>
+              <p>Height</p>
+              <small>{detail.height}</small>
+              <p>Base Experience</p>
+              <small>{detail.base_experience}</small>
+              <p>Species</p>
+              <small>{detail.species.name}</small>
             </div>
             <div>
-              <h3>Items</h3>
-              {detail.held_items.map((e, i) => (
-                <div key={i}>
-                  <p>{e.item.name}</p>
-                  <div>
-                    {e.version_details.map((e, i) => (
-                      <p key={i}>{e.rarity}</p>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <h3>Abilities</h3>
+              <div>
+                {detail.abilities.map((e, i) => (
+                  <p key={i}>
+                    {e.ability.name}
+                    <small key={i}>{e.slot}</small>
+                  </p>
+                ))}
+                {/*add bolean*/}
+              </div>
+            </div>
+            <div>
+              <h3>Types</h3>
+              <div>
+                {detail.types.map((e, i) => (
+                  <p key={i}>
+                    {e.type.name}
+                    <small>{e.slot}</small>
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3>Stats</h3>
+              <div>
+                {detail.stats.map((e, i) => (
+                  <p key={i}>
+                    {e.stat.name}
+                    <small>{e.base_stat}</small>
+                    <small>{e.effort}</small>
+                  </p>
+                ))}
+              </div>
             </div>
           </section>
         </div>

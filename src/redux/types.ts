@@ -16,35 +16,12 @@ export interface Pokemon {
   height: number;
   base_experience: number;
   id: number;
+  order: number;
   abilities: Array<{
     ability: { name: string };
     is_hidden: boolean;
     slot: number;
   }>;
-  held_items: Array<{
-    item: {
-      name: string;
-    };
-    version_details: Array<{
-      rarity: number;
-      version: { name: string };
-    }>;
-  }>;
-  moves: Array<{
-    move: {
-      name: string;
-    };
-    version_group_details: Array<{
-      level_learned_at: number;
-      move_learn_method: {
-        name: string;
-      };
-      version_group: {
-        name: string;
-      };
-    }>;
-  }>;
-  order: number;
   stats: Array<{ base_stat: number; effort: number; stat: { name: string } }>;
   sprites: {
     back_default: string;

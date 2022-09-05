@@ -19,10 +19,10 @@ export const Detail: React.FC<DetailProps> = ({
   const { detail } = useSelector((state: RootState) => state);
 
   // sprites generation
-  const SpritesGen: React.FC<{ generation: string; data: any }> = ({
-    generation,
-    data,
-  }) => {
+  const SpritesGen: React.FC<{
+    generation: string;
+    data: { [key: string]: any };
+  }> = ({ generation, data }) => {
     let keys = Object.keys(data);
     return (
       <div>
@@ -138,6 +138,22 @@ export const Detail: React.FC<DetailProps> = ({
           <div className="sprites-container elem">
             <h3>Sprites</h3>
             <div>
+              {/* {[
+                "generation-i",
+                "generation-ii",
+                "generation-iii",
+                "generation-iv",
+                "generation-v",
+                "generation-vi",
+                "generation-vii",
+                "generation-viii",
+              ].map((e, i) => (
+                <SpritesGen
+                  key={i}
+                  generation={e}
+                  data={detail.sprites.versions[e]}
+                />
+              ))} */}
               <SpritesGen
                 generation="Generation I"
                 data={detail.sprites.versions["generation-i"]}

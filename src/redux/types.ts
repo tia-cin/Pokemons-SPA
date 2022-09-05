@@ -31,6 +31,17 @@ export interface Pokemon {
   sprites: {
     back_default: string;
     front_default: string;
+    others: {
+      dream_world: {
+        front_default: string;
+      };
+      home: {
+        front_default: string;
+      };
+      ["official-artwork"]: {
+        front_default: string;
+      };
+    };
     versions: {
       ["generation-i"]: {
         ["red-blue"]: {
@@ -78,6 +89,7 @@ export interface Pokemon {
           animated: {
             front_default: string;
           };
+          front_default: string;
         };
       };
       ["generation-vi"]: {

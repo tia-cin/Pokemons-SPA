@@ -18,12 +18,6 @@ export const Detail: React.FC<DetailProps> = ({
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
 
-  // rotate pokemon
-  const [turn, setTurn] = useState(true);
-  const handleTurn = (e: any): void => {
-    setTurn(!turn);
-  };
-
   // sprites generation
   const SpritesGen: React.FC<{ generation: string; data: any }> = ({
     generation,
@@ -76,9 +70,6 @@ export const Detail: React.FC<DetailProps> = ({
               />
             </div>
             <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>
-            <button className="turn-btn" onClick={handleTurn}>
-              Turn
-            </button>
           </div>
           <div className="about-container elem">
             <h3>About</h3>

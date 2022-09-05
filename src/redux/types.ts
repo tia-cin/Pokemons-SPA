@@ -60,6 +60,9 @@ export interface Pokemon {
       };
     };
   };
+  species: {
+    name: string;
+  };
   types: Array<{
     slot: number;
     type: {

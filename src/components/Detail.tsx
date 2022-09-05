@@ -20,21 +20,15 @@ export const Detail: React.FC<DetailProps> = ({ firstLetterUpperCase }) => {
     setTurn(!turn);
   };
 
-  // extra component
-  const ExtraComponent: React.FC<{
+  // simple extra component
+  const SimpleComponent: React.FC<{
     title: string;
-    value: Array<string> | string | number;
-  }> = ({ title }, { value }) => {
+    value: string | number;
+  }> = ({ title, value }) => {
     return (
       <div>
         <h3>{title}</h3>
-        <div>
-          {Array.isArray(value) ? (
-            value.map((v, i) => <p key={i}>{v}</p>)
-          ) : (
-            <p>{value}</p>
-          )}
-        </div>
+        <p>{value}</p>
       </div>
     );
   };
@@ -73,15 +67,41 @@ export const Detail: React.FC<DetailProps> = ({ firstLetterUpperCase }) => {
                     : detail.sprites.versions["generation-v"]["black-white"]
                         .animated.back_default
                 }
-                alt=""
+                alt={`${detail.name}-image`}
               />
             </div>
           </header>
           <section>
-            <ExtraComponent
+            <SimpleComponent title="Height" value={detail.height} />
+            <SimpleComponent title="Weight" value={detail.weight} />
+            <SimpleComponent
               title="Base Experience"
               value={detail.base_experience}
             />
+            <SimpleComponent title="Species" value={detail.species.name} />
+            <div>
+              <h3>Abilities</h3>
+              {detail.abilities.map((e, i) => (
+                <div key={i}>
+                  <p>{firstLetterUpperCase(e.ability.name)}</p>
+                  <p>{e.slot}</p>
+                  <small>{e.is_hidden}</small>
+                </div>
+              ))}
+            </div>
+            <div>
+              <h3>Items</h3>
+              {detail.held_items.map((e, i) => (
+                <div key={i}>
+                  <p>{e.item.name}</p>
+                  <div>
+                    {e.version_details.map((e, i) => (
+                      <p key={i}>{e.rarity}</p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       )}

@@ -146,6 +146,30 @@ export const Detail: React.FC<DetailProps> = ({
                 generation="Generation II"
                 data={detail.sprites.versions["generation-ii"]}
               />
+              <SpritesGen
+                generation="Generation III"
+                data={detail.sprites.versions["generation-iii"]}
+              />
+              <SpritesGen
+                generation="Generation IV"
+                data={detail.sprites.versions["generation-iv"]}
+              />
+              <SpritesGen
+                generation="Generation V"
+                data={detail.sprites.versions["generation-v"]}
+              />
+              <SpritesGen
+                generation="Generation VI"
+                data={detail.sprites.versions["generation-vi"]}
+              />
+              <SpritesGen
+                generation="Generation VII"
+                data={detail.sprites.versions["generation-vii"]}
+              />
+              <SpritesGen
+                generation="Generation VIII"
+                data={detail.sprites.versions["generation-viii"]}
+              />
             </div>
           </div>
         </div>

@@ -107,7 +107,7 @@ export interface Pokemon {
           front_default: string;
         };
       };
-      ["genetarion-viii"]: {
+      ["generation-viii"]: {
         icons: {
           front_default: string;
         };

@@ -4,6 +4,8 @@
 }
 
 #pokemons {
+    min-height: 46.8em;
+    max-height: auto;
     background-color: var(--medium);
     display: flex;
     align-items: center;
@@ -41,4 +43,10 @@
 .pagination-active {
     background-color: var(--light);
     color: var(--black);
+}
+
+.break {
+    background-color: transparent;
+    color: var(--dark);
+    font-weight: bolder;
 }

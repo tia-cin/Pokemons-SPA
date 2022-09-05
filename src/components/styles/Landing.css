@@ -3,9 +3,9 @@
 }
 
 #landing {
+    height: 46.8em;
     background-color: var(--light);
     align-items: center;
-    padding: 7em 0;
 }
 
 .text-container {

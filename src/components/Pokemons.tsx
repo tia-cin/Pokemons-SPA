@@ -54,7 +54,7 @@ export const Pokemons: React.FC = () => {
           pageClassName="pages"
           previousClassName="pages pagination-buttons"
           containerClassName="pagination"
-          breakClassName="pages b"
+          breakClassName="pages break"
           previousLabel={"<"}
           nextLabel={">"}
           pageCount={totalPages}

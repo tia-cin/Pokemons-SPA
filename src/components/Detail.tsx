@@ -18,8 +18,6 @@ export const Detail: React.FC<DetailProps> = ({
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
 
-  // sprites others
-
   // sprites generation
   const SpritesGen: React.FC<{
     data: any;
@@ -64,6 +62,20 @@ export const Detail: React.FC<DetailProps> = ({
         ) : (
           <Sprites src={data[keys]} theme={keys} />
         )} */}
+      </div>
+    );
+  };
+
+  // sprites others
+  const SpritesOthers: React.FC<{ data: any }> = ({ data }) => {
+    let keys = Object.keys(data);
+
+    return (
+      <div>
+        <h5>Others</h5>
+        {keys.map((k, i) => (
+          <Sprites key={i} src={data[k]} theme={k} />
+        ))}
       </div>
     );
   };
@@ -173,7 +185,7 @@ export const Detail: React.FC<DetailProps> = ({
           <div className="sprites-container elem">
             <h3>Sprites</h3>
             <div>
-              {/* <SpritesOthers data={detail.sprites.others} /> */}
+              <SpritesOthers data={detail.sprites.other} />
               <SpritesGen data={detail.sprites.versions} />
             </div>
           </div>

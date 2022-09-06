@@ -15,9 +15,7 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
   const { detail } = useSelector((state: RootState) => state);
 
   // sprites generation
-  const SpritesGen: React.FC<{
-    data: any;
-  }> = ({ data }) => {
+  const SpritesGen: React.FC<{ data: any }> = ({ data }) => {
     let generations = Object.keys(data);
     let generationsKeys = generations.map((g) => Object.keys(data[g]));
     return (
@@ -91,6 +89,7 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
       {detail && (
         <div className="pokemon-container">
           <div className="titles-container elem">
+            <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>
             <div className="image-container">
               <img
                 src={
@@ -100,33 +99,33 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
                 alt={detail.name}
               />
             </div>
-            <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>
           </div>
           <div className="about-container elem">
             <Info
               title="About"
               text={["Weight", "Height", "Base Experience", "Species", "Order"]}
               small={[
-                detail.weight,
-                detail.height,
+                Math.round(detail.weight / 2.2046) + "kg",
+                Math.round(detail.height / 3.2808) + "m",
                 detail.base_experience,
                 detail.species.name,
                 detail.order,
               ]}
             />
-          </div>
-          <div className="abilities-container elem">
             <Info
               title="Abilities"
               text={detail.abilities.map((a) => a.ability.name)}
               small={detail.abilities.map((a) => a.slot)}
             />
-          </div>
-          <div className="types-container elem">
             <Info
               title="Types"
               text={detail.types.map((t) => t.type.name)}
               small={detail.types.map((t) => t.slot)}
+            />
+            <Info
+              title="Items"
+              text={detail.held_items.map((i) => i.item.name)}
+              small={null}
             />
           </div>
           <div className="stats-container elem">
@@ -144,13 +143,6 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
                 </p>
               ))}
             </div>
-          </div>
-          <div className="items-container elem">
-            <Info
-              title="Items"
-              text={detail.held_items.map((i) => i.item.name)}
-              small={null}
-            />
           </div>
           <div className="sprites-container elem">
             <h3>Sprites</h3>

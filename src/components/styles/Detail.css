@@ -11,7 +11,32 @@
     gap: 3em 5em; 
     grid-template-areas: 
       "titles-container about-container"
-      "abilities-container types-container"
-      "stats-container items-container"
+      "stats-container about-container"
       "sprites-container sprites-container"; 
+}
+
+.titles-continer {
+    grid-area: titles-continer;
+}
+
+.about-container {
+    grid-area: about-container;
+}
+
+.stats-container {
+    grid-area: stats-container;
+}
+
+.sprites-container {
+    grid-area: sprites-container;
+}
+
+.others-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.generations-pokemon {
+    display: flex;
+    flex-direction: row;
 }

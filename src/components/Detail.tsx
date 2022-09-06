@@ -22,16 +22,8 @@ export const Detail: React.FC<DetailProps> = ({
   const SpritesGen: React.FC<{
     data: any;
   }> = ({ data }) => {
-    // let base = Object.keys(data).filter(
-    //   (k) => data[k] !== null && typeof data[k] !== "string"
-    // );
-    // let keys = base.map((b) => Object.keys(data[b]));
-    // let others = keys[0]
-    //   .map((k) => data[base[0]][k])
-    //   .map((o) => o.front_default);
     let generations = Object.keys(data);
     let generationsKeys = generations.map((g) => Object.keys(data[g]));
-
     return (
       <div>
         <h5>Generations</h5>
@@ -45,23 +37,6 @@ export const Detail: React.FC<DetailProps> = ({
             </div>
           </div>
         ))}
-        {/* <div>
-          {others.map((o, i) => (
-            <Sprites key={i} src={o} theme={o} />
-          ))}
-        </div>
-        <div>
-          <h5>Others</h5>
-          {generations.map((g, index) =>
-            g.map((e, i) => <Sprites key={i} src={e} theme={keys[1][index]} />)
-          )}
-        </div> */}
-        {/* <h5>{generation}</h5>
-        {Array.isArray(keys) ? (
-          keys.map((e, i) => <Sprites key={i} src={data[e]} theme={e} />)
-        ) : (
-          <Sprites src={data[keys]} theme={keys} />
-        )} */}
       </div>
     );
   };
@@ -69,7 +44,6 @@ export const Detail: React.FC<DetailProps> = ({
   // sprites others
   const SpritesOthers: React.FC<{ data: any }> = ({ data }) => {
     let keys = Object.keys(data);
-
     return (
       <div>
         <h5>Others</h5>
@@ -127,7 +101,7 @@ export const Detail: React.FC<DetailProps> = ({
                   detail.sprites.versions["generation-v"]["black-white"]
                     .animated.front_default
                 }
-                alt={`${detail.name}-image`}
+                alt={detail.name}
               />
             </div>
             <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>

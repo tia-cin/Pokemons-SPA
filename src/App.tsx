@@ -48,12 +48,7 @@ export const App: React.FC = () => {
             />
             <Route
               path="/pokemon/:id"
-              element={
-                <Detail
-                  firstLetterUpperCase={firstLetterUpperCase}
-                  colors={typesColors}
-                />
-              }
+              element={<Detail colors={typesColors} />}
             />
           </Routes>
         </main>

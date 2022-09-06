@@ -6,14 +6,10 @@ import { getDetailAction } from "../redux/actions/actions";
 import { RootState } from "../redux/store";
 
 interface DetailProps {
-  firstLetterUpperCase: (word: string) => string;
   colors: { [key: string]: any };
 }
 
-export const Detail: React.FC<DetailProps> = ({
-  firstLetterUpperCase,
-  colors,
-}) => {
+export const Detail: React.FC<DetailProps> = ({ colors }) => {
   const dispatch = useDispatch();
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
@@ -25,11 +21,11 @@ export const Detail: React.FC<DetailProps> = ({
     let generations = Object.keys(data);
     let generationsKeys = generations.map((g) => Object.keys(data[g]));
     return (
-      <div>
+      <div className="generations-pokemon">
         <h5>Generations</h5>
         {generations.map((gen, ind) => (
-          <div key={ind}>
-            <p>{gen}</p>
+          <div key={ind} className="generation-container">
+            <p className="generation-title">{gen}</p>
             <div>
               {generationsKeys[ind].map((k, i) => (
                 <Sprites key={i} src={data[gen][k]} theme={k} />
@@ -45,7 +41,7 @@ export const Detail: React.FC<DetailProps> = ({
   const SpritesOthers: React.FC<{ data: any }> = ({ data }) => {
     let keys = Object.keys(data);
     return (
-      <div>
+      <div className="others-container">
         <h5>Others</h5>
         {keys.map((k, i) => (
           <Sprites key={i} src={data[k]} theme={k} />
@@ -60,9 +56,9 @@ export const Detail: React.FC<DetailProps> = ({
     theme: string;
   }> = ({ src, theme }) => {
     return (
-      <div>
+      <div className="sprites-container">
         <img src={src.front_default} alt="pokemon-sprite" />
-        <small>{theme}</small>
+        <small className="caption">{theme}</small>
       </div>
     );
   };

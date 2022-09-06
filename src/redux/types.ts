@@ -26,7 +26,11 @@ export interface Pokemon {
     ability: { name: string };
     slot: number;
   }>;
-  stats: Array<{ base_stat: number; effort: number; stat: { name: string } }>;
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: { name: string };
+  }>;
   sprites: {
     back_default: string;
     front_default: string;

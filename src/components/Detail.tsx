@@ -1,5 +1,5 @@
 import "./styles/Detail.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailAction } from "../redux/actions/actions";
@@ -18,32 +18,73 @@ export const Detail: React.FC<DetailProps> = ({
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
 
-  // sprites generation
-  const SpritesGen: React.FC<{
-    generation: string;
-    data: { [key: string]: any };
-  }> = ({ generation, data }) => {
+  // sprites others
+  const SpritesOthers: React.FC<{ data: any }> = ({ data }) => {
     let keys = Object.keys(data);
+    console.log("--------------------------");
+    console.log(data);
+    console.log("--------------------------");
     return (
       <div>
-        <h5>{generation}</h5>
+        <h5>Versions</h5>
+        {/* {others.map((o, i) => (
+      <Sprites key={i} src={o} theme={o} />
+    ))} */}
+      </div>
+    );
+  };
+
+  // sprites generation
+  const SpritesGen: React.FC<{
+    data: any;
+  }> = ({ data }) => {
+    let base = Object.keys(data).filter(
+      (k) => data[k] !== null && typeof data[k] !== "string"
+    );
+    let keys = base.map((b) => Object.keys(data[b]));
+    let others = keys[0]
+      .map((k) => data[base[0]][k])
+      .map((o) => o.front_default);
+
+    let versions = keys[1].map((k) =>
+      Object.keys(data[base[1]][k]).map((v) => data[base[1]][k][v])
+    );
+    let generations = versions.map((v) => v.map((val) => val.front_default));
+    // console.log("====================================");
+    // console.log(keys);
+    // console.log("====================================");
+    return (
+      <div>
+        {/* <div>
+          <h5>Versions</h5>
+          {others.map((o, i) => (
+            <Sprites key={i} src={o} theme={o} />
+          ))}
+        </div>
+        <div>
+          <h5>Others</h5>
+          {generations.map((g, index) =>
+            g.map((e, i) => <Sprites key={i} src={e} theme={keys[1][index]} />)
+          )}
+        </div> */}
+        {/* <h5>{generation}</h5>
         {Array.isArray(keys) ? (
           keys.map((e, i) => <Sprites key={i} src={data[e]} theme={e} />)
         ) : (
           <Sprites src={data[keys]} theme={keys} />
-        )}
+        )} */}
       </div>
     );
   };
 
   // sprites component
   const Sprites: React.FC<{
-    src: { front_default: string };
+    src: string;
     theme: string;
   }> = ({ src, theme }) => {
     return (
       <div>
-        <img src={src.front_default} alt="pokemon-sprite" />
+        <img src={src} alt="pokemon-sprite" />
         <small>{theme}</small>
       </div>
     );
@@ -138,54 +179,8 @@ export const Detail: React.FC<DetailProps> = ({
           <div className="sprites-container elem">
             <h3>Sprites</h3>
             <div>
-              {/* {[
-                "generation-i",
-                "generation-ii",
-                "generation-iii",
-                "generation-iv",
-                "generation-v",
-                "generation-vi",
-                "generation-vii",
-                "generation-viii",
-              ].map((e, i) => (
-                <SpritesGen
-                  key={i}
-                  generation={e}
-                  data={detail.sprites.versions[e]}
-                />
-              ))} */}
-              <SpritesGen
-                generation="Generation I"
-                data={detail.sprites.versions["generation-i"]}
-              />
-              <SpritesGen
-                generation="Generation II"
-                data={detail.sprites.versions["generation-ii"]}
-              />
-              <SpritesGen
-                generation="Generation III"
-                data={detail.sprites.versions["generation-iii"]}
-              />
-              <SpritesGen
-                generation="Generation IV"
-                data={detail.sprites.versions["generation-iv"]}
-              />
-              <SpritesGen
-                generation="Generation V"
-                data={detail.sprites.versions["generation-v"]}
-              />
-              <SpritesGen
-                generation="Generation VI"
-                data={detail.sprites.versions["generation-vi"]}
-              />
-              <SpritesGen
-                generation="Generation VII"
-                data={detail.sprites.versions["generation-vii"]}
-              />
-              <SpritesGen
-                generation="Generation VIII"
-                data={detail.sprites.versions["generation-viii"]}
-              />
+              <SpritesGen data={detail.sprites.versions} />
+              <SpritesOthers data={detail.sprites.others} />
             </div>
           </div>
         </div>

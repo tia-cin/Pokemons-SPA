@@ -19,44 +19,35 @@ export const Detail: React.FC<DetailProps> = ({
   const { detail } = useSelector((state: RootState) => state);
 
   // sprites others
-  const SpritesOthers: React.FC<{ data: any }> = ({ data }) => {
-    let keys = Object.keys(data);
-    console.log("--------------------------");
-    console.log(data);
-    console.log("--------------------------");
-    return (
-      <div>
-        <h5>Versions</h5>
-        {/* {others.map((o, i) => (
-      <Sprites key={i} src={o} theme={o} />
-    ))} */}
-      </div>
-    );
-  };
 
   // sprites generation
   const SpritesGen: React.FC<{
     data: any;
   }> = ({ data }) => {
-    let base = Object.keys(data).filter(
-      (k) => data[k] !== null && typeof data[k] !== "string"
-    );
-    let keys = base.map((b) => Object.keys(data[b]));
-    let others = keys[0]
-      .map((k) => data[base[0]][k])
-      .map((o) => o.front_default);
+    // let base = Object.keys(data).filter(
+    //   (k) => data[k] !== null && typeof data[k] !== "string"
+    // );
+    // let keys = base.map((b) => Object.keys(data[b]));
+    // let others = keys[0]
+    //   .map((k) => data[base[0]][k])
+    //   .map((o) => o.front_default);
+    let generations = Object.keys(data);
+    let generationsKeys = generations.map((g) => Object.keys(data[g]));
 
-    let versions = keys[1].map((k) =>
-      Object.keys(data[base[1]][k]).map((v) => data[base[1]][k][v])
-    );
-    let generations = versions.map((v) => v.map((val) => val.front_default));
-    // console.log("====================================");
-    // console.log(keys);
-    // console.log("====================================");
     return (
       <div>
+        <h5>Generations</h5>
+        {generations.map((gen, ind) => (
+          <div key={ind}>
+            <p>{gen}</p>
+            <div>
+              {generationsKeys[ind].map((k, i) => (
+                <Sprites key={i} src={data[gen][k]} theme={k} />
+              ))}
+            </div>
+          </div>
+        ))}
         {/* <div>
-          <h5>Versions</h5>
           {others.map((o, i) => (
             <Sprites key={i} src={o} theme={o} />
           ))}
@@ -79,12 +70,12 @@ export const Detail: React.FC<DetailProps> = ({
 
   // sprites component
   const Sprites: React.FC<{
-    src: string;
+    src: { front_default: string };
     theme: string;
   }> = ({ src, theme }) => {
     return (
       <div>
-        <img src={src} alt="pokemon-sprite" />
+        <img src={src.front_default} alt="pokemon-sprite" />
         <small>{theme}</small>
       </div>
     );
@@ -112,8 +103,6 @@ export const Detail: React.FC<DetailProps> = ({
   useEffect(() => {
     dispatch<any>(getDetailAction(id));
   }, [dispatch, id]);
-
-  console.log(detail);
 
   return (
     <div className="page-container" id="detail">
@@ -164,7 +153,12 @@ export const Detail: React.FC<DetailProps> = ({
               {detail.stats.map((e, i) => (
                 <p key={i}>
                   {e.stat.name}
-                  <input type="range" min="0" max="100" value={e.base_stat} />
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue={e.base_stat}
+                  />
                 </p>
               ))}
             </div>
@@ -179,8 +173,8 @@ export const Detail: React.FC<DetailProps> = ({
           <div className="sprites-container elem">
             <h3>Sprites</h3>
             <div>
+              {/* <SpritesOthers data={detail.sprites.others} /> */}
               <SpritesGen data={detail.sprites.versions} />
-              <SpritesOthers data={detail.sprites.others} />
             </div>
           </div>
         </div>

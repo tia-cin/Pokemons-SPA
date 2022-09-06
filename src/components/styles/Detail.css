@@ -4,6 +4,11 @@
     padding-top: 5em;
 }
 
+.image-container img {
+    width: 150px;
+    height: auto;
+}
+
 .pokemon-container {
     display: grid; 
     grid-template-columns: 1fr 1fr; 

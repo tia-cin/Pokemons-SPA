@@ -33,7 +33,7 @@ export interface Pokemon {
     };
     version_group_details: Array<{
       level_learned_at: number;
-      move_learned_method: {
+      move_learn_method: {
         name: string;
       };
       version_group: {

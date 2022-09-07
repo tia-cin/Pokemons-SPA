@@ -126,65 +126,75 @@ export const Detail: React.FC<DetailProps> = ({
     <div className="page-container" id="detail">
       {detail && (
         <div className="pokemon-container">
-          <div className="titles-container elem">
-            <h1 className="pokemon-name">{detail.name.toLocaleUpperCase()}</h1>
-            <div className="image-container">
-              <img
-                src={
-                  detail.sprites.versions["generation-v"]["black-white"]
-                    .animated.front_default
+          <div className="about-container elem">
+            <div className="titles-container">
+              <h1 className="pokemon-name">
+                {detail.name.toLocaleUpperCase()}
+              </h1>
+              <div className="pokemon-image">
+                <img
+                  src={
+                    detail.sprites.versions["generation-v"]["black-white"]
+                      .animated.front_default
+                  }
+                  alt={detail.name}
+                />
+              </div>
+            </div>
+            <div className="characteristics-container">
+              <Info
+                title="About"
+                text={[
+                  "Weight",
+                  "Height",
+                  "Base Experience",
+                  "Species",
+                  "Order",
+                ]}
+                small={[
+                  Math.round(detail.weight / 2.2046) + "kg",
+                  Math.round(detail.height / 3.2808) + "m",
+                  detail.base_experience,
+                  detail.species.name,
+                  detail.order,
+                ]}
+              />
+              <Info
+                title="Abilities"
+                text={detail.abilities.map((a) => a.ability.name)}
+                small={detail.abilities.map((a) => a.slot)}
+              />
+              <Info
+                title="Types"
+                text={detail.types.map((t) => t.type.name)}
+                small={detail.types.map((t) => t.slot)}
+              />
+              <Info
+                title="Items"
+                text={
+                  detail.held_items.length > 1
+                    ? detail.held_items.map((i) => i.item.name)
+                    : ["None"]
                 }
-                alt={detail.name}
+                small={null}
               />
             </div>
-          </div>
-          <div className="about-container elem">
-            <Info
-              title="About"
-              text={["Weight", "Height", "Base Experience", "Species", "Order"]}
-              small={[
-                Math.round(detail.weight / 2.2046) + "kg",
-                Math.round(detail.height / 3.2808) + "m",
-                detail.base_experience,
-                detail.species.name,
-                detail.order,
-              ]}
-            />
-            <Info
-              title="Abilities"
-              text={detail.abilities.map((a) => a.ability.name)}
-              small={detail.abilities.map((a) => a.slot)}
-            />
-            <Info
-              title="Types"
-              text={detail.types.map((t) => t.type.name)}
-              small={detail.types.map((t) => t.slot)}
-            />
-            <Info
-              title="Items"
-              text={
-                detail.held_items.length > 1
-                  ? detail.held_items.map((i) => i.item.name)
-                  : ["None"]
-              }
-              small={null}
-            />
-          </div>
-          <div className="stats-container elem">
-            <h3>Stats</h3>
-            <div>
-              {detail.stats.map((e, i) => (
-                <p key={i} className="stat-detail">
-                  {e.stat.name}
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    defaultValue={e.base_stat}
-                  />
-                  <small>{e.base_stat}</small>
-                </p>
-              ))}
+            <div className="stats-container">
+              <h3>Stats</h3>
+              <div>
+                {detail.stats.map((e, i) => (
+                  <p key={i} className="stat-detail">
+                    {e.stat.name}
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      defaultValue={e.base_stat}
+                    />
+                    <small>{e.base_stat}</small>
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
           <div className="moves-container elem">
@@ -193,10 +203,8 @@ export const Detail: React.FC<DetailProps> = ({
           </div>
           <div className="sprites-container elem">
             <h3>Sprites</h3>
-            <div>
-              <SpritesOthers data={detail.sprites.other} />
-              <SpritesGen data={detail.sprites.versions} />
-            </div>
+            <SpritesOthers data={detail.sprites.other} />
+            <SpritesGen data={detail.sprites.versions} />
           </div>
         </div>
       )}

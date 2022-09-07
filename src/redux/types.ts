@@ -25,6 +25,21 @@ export interface Pokemon {
   abilities: Array<{
     ability: { name: string };
     slot: number;
+    is_hidden: boolean;
+  }>;
+  moves: Array<{
+    move: {
+      name: string;
+    };
+    version_group_details: Array<{
+      level_learned_at: number;
+      move_learned_method: {
+        name: string;
+      };
+      version_group: {
+        name: string;
+      };
+    }>;
   }>;
   stats: Array<{
     base_stat: number;

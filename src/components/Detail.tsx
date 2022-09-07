@@ -61,6 +61,37 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
     );
   };
 
+  // moves component
+  const Moves: React.FC<{ data: Array<any> }> = ({ data }) => {
+    let currentMoves = data.slice(0, 5);
+    console.log("====================================");
+    console.log(currentMoves);
+    console.log("====================================");
+
+    return (
+      <div>
+        <h5>Moves</h5>
+        {currentMoves.map((m, i) => (
+          <div key={i}>
+            <div>
+              <p>Level</p>
+              {m.version_group_details.map((l: any, i: number) => (
+                <div key={i}>
+                  <p>{l.level_learned_at}</p>
+                  <p>{l.move_learned_method}</p>
+                </div>
+              ))}
+            </div>
+            <div>
+              <p>Move</p>
+              <p>{m.move.name}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   // info component
   const Info: React.FC<{
     title: string;
@@ -83,6 +114,8 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
   useEffect(() => {
     dispatch<any>(getDetailAction(id));
   }, [dispatch, id]);
+
+  console.log(detail);
 
   return (
     <div className="page-container" id="detail">
@@ -140,9 +173,13 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
                     max="100"
                     defaultValue={e.base_stat}
                   />
+                  <small>{e.base_stat}</small>
                 </p>
               ))}
             </div>
+          </div>
+          <div className="moves-container elem">
+            <Moves data={detail.moves} />
           </div>
           <div className="sprites-container elem">
             <h3>Sprites</h3>

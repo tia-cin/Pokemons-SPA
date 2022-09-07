@@ -16,7 +16,7 @@
     gap: 3em 5em; 
     grid-template-areas: 
       "titles-container about-container"
-      "stats-container about-container"
+      "stats-container moves-container"
       "sprites-container sprites-container"; 
 }
 
@@ -30,6 +30,10 @@
 
 .stats-container {
     grid-area: stats-container;
+}
+
+.moves-container {
+    grid-area: moves-container;
 }
 
 .sprites-container {

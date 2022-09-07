@@ -61,3 +61,24 @@
 .text-container small {
     padding-left: 1.5em;
 }
+
+.move-container {
+    display: grid;
+    border: 1px solid black;
+}
+
+.move-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.stat-detail  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: start;
+}
+
+.sprite-container img {
+    width: 100px;
+    height: auto;
+}

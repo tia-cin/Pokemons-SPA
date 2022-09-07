@@ -45,9 +45,11 @@ export const Detail: React.FC<DetailProps> = ({
     return (
       <div className="others-container">
         <h5>Others</h5>
-        {keys.map((k, i) => (
-          <Sprites key={i} src={data[k]} theme={k} />
-        ))}
+        <div>
+          {keys.map((k, i) => (
+            <Sprites key={i} src={data[k]} theme={k} />
+          ))}
+        </div>
       </div>
     );
   };
@@ -58,7 +60,7 @@ export const Detail: React.FC<DetailProps> = ({
     theme: string;
   }> = ({ src, theme }) => {
     return (
-      <div className="sprites-container">
+      <div className="sprite-container">
         <img src={src.front_default} alt="pokemon-sprite" />
         <small className="caption">{theme}</small>
       </div>
@@ -70,16 +72,19 @@ export const Detail: React.FC<DetailProps> = ({
     let currentMoves = data.slice(0, 5);
     return (
       <div>
-        <h3>Moves</h3>
         {currentMoves.map((m: any, i: number) => (
-          <div key={i}>
+          <div key={i} className="move-container">
             <div>
-              <p>Move</p>
-              <p>{m.move.name}</p>
+              <p>{firstLetterUpperCase(m.move.name)}</p>
             </div>
             <div>
+              <div className="move-details">
+                <p>Level</p>
+                <p>Move</p>
+                <p>Version</p>
+              </div>
               {m.version_group_details.slice(0, 5).map((l: any, i: number) => (
-                <div key={i}>
+                <div key={i} className="move-details">
                   <p>{l.level_learned_at}</p>
                   <p>{l.move_learn_method.name}</p>
                   <p>{l.version_group.name}</p>
@@ -169,7 +174,7 @@ export const Detail: React.FC<DetailProps> = ({
             <h3>Stats</h3>
             <div>
               {detail.stats.map((e, i) => (
-                <p key={i}>
+                <p key={i} className="stat-detail">
                   {e.stat.name}
                   <input
                     type="range"
@@ -183,6 +188,7 @@ export const Detail: React.FC<DetailProps> = ({
             </div>
           </div>
           <div className="moves-container elem">
+            <h3>Moves</h3>
             <Moves data={detail.moves} />
           </div>
           <div className="sprites-container elem">

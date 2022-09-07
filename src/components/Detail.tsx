@@ -7,9 +7,13 @@ import { RootState } from "../redux/store";
 
 interface DetailProps {
   colors: { [key: string]: any };
+  firstLetterUpperCase: (word: string) => string;
 }
 
-export const Detail: React.FC<DetailProps> = ({ colors }) => {
+export const Detail: React.FC<DetailProps> = ({
+  colors,
+  firstLetterUpperCase,
+}) => {
   const dispatch = useDispatch();
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
@@ -66,7 +70,7 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
     let currentMoves = data.slice(0, 5);
     return (
       <div>
-        <h5>Moves</h5>
+        <h3>Moves</h3>
         {currentMoves.map((m: any, i: number) => (
           <div key={i}>
             <div>
@@ -95,12 +99,12 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
     small: Array<string | number> | null;
   }> = ({ title, text, small }) => {
     return (
-      <div>
+      <div className="text-container">
         <h3>{title}</h3>
         {text.map((t, i) => (
           <p key={i}>
-            {t}
-            {small && <small key={i}>{small[i]}</small>}
+            {firstLetterUpperCase(t)}
+            {small && <small key={i}>{small[i] ? small[i] : "None"}</small>}
           </p>
         ))}
       </div>
@@ -153,7 +157,11 @@ export const Detail: React.FC<DetailProps> = ({ colors }) => {
             />
             <Info
               title="Items"
-              text={detail.held_items.map((i) => i.item.name)}
+              text={
+                detail.held_items.length > 1
+                  ? detail.held_items.map((i) => i.item.name)
+                  : ["None"]
+              }
               small={null}
             />
           </div>

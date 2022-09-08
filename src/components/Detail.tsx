@@ -25,16 +25,18 @@ export const Detail: React.FC<DetailProps> = ({
     return (
       <div className="generations-pokemon">
         <h5>Generations</h5>
-        {generations.map((gen, ind) => (
-          <div key={ind} className="generation-container">
-            <p className="generation-title">{gen}</p>
-            <div>
-              {generationsKeys[ind].map((k, i) => (
-                <Sprites key={i} src={data[gen][k]} theme={k} />
-              ))}
+        <div className="generations-column">
+          {generations.map((gen, ind) => (
+            <div key={ind} className="generation-container">
+              <p className="generation-title">{gen}</p>
+              <div>
+                {generationsKeys[ind].map((k, i) => (
+                  <Sprites key={i} src={data[gen][k]} theme={k} />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   };
@@ -99,18 +101,16 @@ export const Detail: React.FC<DetailProps> = ({
 
   // info component
   const Info: React.FC<{
-    title: string;
     text: Array<string>;
     small: Array<string | number> | null;
-  }> = ({ title, text, small }) => {
+  }> = ({ text, small }) => {
     return (
-      <div className="text-container">
-        <h3>{title}</h3>
+      <div>
         {text.map((t, i) => (
-          <p key={i}>
-            {firstLetterUpperCase(t)}
+          <div className="text-container">
+            <p key={i}>{firstLetterUpperCase(t)}</p>
             {small && <small key={i}>{small[i] ? small[i] : "None"}</small>}
-          </p>
+          </div>
         ))}
       </div>
     );
@@ -128,9 +128,11 @@ export const Detail: React.FC<DetailProps> = ({
         <div className="pokemon-container">
           <div className="about-container elem">
             <div className="titles-container">
-              <h1 className="pokemon-name">
-                {detail.name.toLocaleUpperCase()}
-              </h1>
+              <div>
+                <h1 className="pokemon-name">
+                  {detail.name.toLocaleUpperCase()}
+                </h1>
+              </div>
               <div className="pokemon-image">
                 <img
                   src={
@@ -142,59 +144,62 @@ export const Detail: React.FC<DetailProps> = ({
               </div>
             </div>
             <div className="characteristics-container">
-              <Info
-                title="About"
-                text={[
-                  "Weight",
-                  "Height",
-                  "Base Experience",
-                  "Species",
-                  "Order",
-                ]}
-                small={[
-                  Math.round(detail.weight / 2.2046) + "kg",
-                  Math.round(detail.height / 3.2808) + "m",
-                  detail.base_experience,
-                  detail.species.name,
-                  detail.order,
-                ]}
-              />
-              <Info
-                title="Abilities"
-                text={detail.abilities.map((a) => a.ability.name)}
-                small={detail.abilities.map((a) => a.slot)}
-              />
-              <Info
-                title="Types"
-                text={detail.types.map((t) => t.type.name)}
-                small={detail.types.map((t) => t.slot)}
-              />
-              <Info
-                title="Items"
-                text={
-                  detail.held_items.length > 1
-                    ? detail.held_items.map((i) => i.item.name)
-                    : ["None"]
-                }
-                small={null}
-              />
-            </div>
-            <div className="stats-container">
-              <h3>Stats</h3>
               <div>
-                {detail.stats.map((e, i) => (
-                  <p key={i} className="stat-detail">
-                    {e.stat.name}
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      defaultValue={e.base_stat}
-                    />
-                    <small>{e.base_stat}</small>
-                  </p>
-                ))}
+                <h3>ABOUT</h3>
               </div>
+              <div>
+                <Info
+                  text={[
+                    "Weight",
+                    "Height",
+                    "Base Experience",
+                    "Species",
+                    "Order",
+                  ]}
+                  small={[
+                    Math.round(detail.weight / 2.2046) + "kg",
+                    Math.round(detail.height / 3.2808) + "m",
+                    detail.base_experience,
+                    detail.species.name,
+                    detail.order,
+                  ]}
+                />
+                <Info
+                  text={detail.abilities.map((a) => a.ability.name)}
+                  small={detail.abilities.map((a) => a.slot)}
+                />
+                <Info
+                  text={detail.types.map((t) => t.type.name)}
+                  small={detail.types.map((t) => t.slot)}
+                />
+                <Info
+                  text={["Items"]}
+                  small={
+                    detail.held_items.length > 1
+                      ? detail.held_items.map((i) => i.item.name)
+                      : ["None"]
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div className="stats-container elem">
+            <div>
+              <h3>STATS</h3>
+            </div>
+            <div>
+              {detail.stats.map((e, i) => (
+                <div className="stat-detail">
+                  <p key={i}>{e.stat.name}</p>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue={e.base_stat}
+                  />
+                  <small>{e.base_stat}</small>
+                </div>
+              ))}
             </div>
           </div>
           <div className="moves-container elem">

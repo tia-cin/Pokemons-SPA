@@ -136,13 +136,22 @@
     margin: .1em 0;
 }
 
+.sprites-container h5 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
 .sprite-container img {
     width: 100px;
     height: auto;
 }
 
-.others-container, .generations-column {
+.others-container {
     margin: 4em 0;
+}
+
+.generations-column {
+    margin-bottom: 4em;
 }
 
 .others-container div, .generations-column {
@@ -153,6 +162,10 @@
     margin: 1em 0;
     border-radius: .5em;
     padding: 1em;
+}
+
+.others-container div, .generations-column {
+    margin: 1em 5em;
 }
 
 .generation-title {

@@ -24,11 +24,11 @@ export const Detail: React.FC<DetailProps> = ({
     let generationsKeys = generations.map((g) => Object.keys(data[g]));
     return (
       <div className="generations-pokemon">
-        <h5>Generations</h5>
+        <h5>GENERATIONS</h5>
         <div className="generations-column">
           {generations.map((gen, ind) => (
             <div key={ind} className="generation-container">
-              <p className="generation-title">{gen}</p>
+              <p className="generation-title">{gen.toLocaleUpperCase()}</p>
               <div>
                 {generationsKeys[ind].map((k, i) => (
                   <Sprites key={i} src={data[gen][k]} theme={k} />
@@ -46,7 +46,7 @@ export const Detail: React.FC<DetailProps> = ({
     let keys = Object.keys(data);
     return (
       <div className="others-container">
-        <h5>Others</h5>
+        <h5>OTHERS</h5>
         <div>
           {keys.map((k, i) => (
             <Sprites key={i} src={data[k]} theme={k} />
@@ -64,7 +64,7 @@ export const Detail: React.FC<DetailProps> = ({
     return (
       <div className="sprite-container">
         <img src={src.front_default} alt="pokemon-sprite" />
-        <small className="caption">{theme}</small>
+        <small className="caption">{theme.toLocaleUpperCase()}</small>
       </div>
     );
   };
@@ -203,11 +203,15 @@ export const Detail: React.FC<DetailProps> = ({
             </div>
           </div>
           <div className="moves-container elem">
-            <h3>Moves</h3>
+            <div>
+              <h3>MOVES</h3>
+            </div>
             <Moves data={detail.moves} />
           </div>
           <div className="sprites-container elem">
-            <h3>Sprites</h3>
+            <div>
+              <h3>SPRITES</h3>
+            </div>
             <SpritesOthers data={detail.sprites.other} />
             <SpritesGen data={detail.sprites.versions} />
           </div>

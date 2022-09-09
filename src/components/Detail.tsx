@@ -18,6 +18,11 @@ export const Detail: React.FC<DetailProps> = ({
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
 
+  // palette
+  let color1 = detail && colors[detail.types[0].type.name];
+  let color2 =
+    detail && detail.types[1] ? colors[detail.types[1].type.name] : "#f5f5f5";
+
   // sprites generation
   const SpritesGen: React.FC<{ data: any }> = ({ data }) => {
     let generations = Object.keys(data);
@@ -27,7 +32,11 @@ export const Detail: React.FC<DetailProps> = ({
         <h5>GENERATIONS</h5>
         <div className="generations-column">
           {generations.map((gen, ind) => (
-            <div key={ind} className="generation-container">
+            <div
+              key={ind}
+              className="generation-container"
+              style={{ backgroundColor: "#f5f5f5" }}
+            >
               <p className="generation-title">{gen.toLocaleUpperCase()}</p>
               <div>
                 {generationsKeys[ind].map((k, i) => (
@@ -47,7 +56,7 @@ export const Detail: React.FC<DetailProps> = ({
     return (
       <div className="others-container">
         <h5>OTHERS</h5>
-        <div>
+        <div style={{ backgroundColor: "#f5f5f5" }}>
           {keys.map((k, i) => (
             <Sprites key={i} src={data[k]} theme={k} />
           ))}
@@ -75,12 +84,16 @@ export const Detail: React.FC<DetailProps> = ({
     return (
       <div>
         {currentMoves.map((m: any, i: number) => (
-          <div key={i} className="move-container">
-            <div>
+          <div
+            key={i}
+            className="move-container"
+            style={{ backgroundColor: `${color2}` }}
+          >
+            <div className="move-name">
               <p>{firstLetterUpperCase(m.move.name)}</p>
             </div>
             <div>
-              <div className="move-details">
+              <div className="move-details first">
                 <p>Level</p>
                 <p>Move</p>
                 <p>Version</p>
@@ -123,7 +136,11 @@ export const Detail: React.FC<DetailProps> = ({
   console.log(detail);
 
   return (
-    <div className="page-container" id="detail">
+    <div
+      className="page-container"
+      id="detail"
+      style={{ backgroundColor: `${color1}` }}
+    >
       {detail && (
         <div className="pokemon-container">
           <div className="about-container elem">
@@ -160,7 +177,7 @@ export const Detail: React.FC<DetailProps> = ({
                     Math.round(detail.weight / 2.2046) + "kg",
                     Math.round(detail.height / 3.2808) + "m",
                     detail.base_experience,
-                    detail.species.name,
+                    firstLetterUpperCase(detail.species.name),
                     detail.order,
                   ]}
                 />
@@ -183,7 +200,10 @@ export const Detail: React.FC<DetailProps> = ({
               </div>
             </div>
           </div>
-          <div className="stats-container elem">
+          <div
+            className="stats-container elem"
+            style={{ backgroundColor: `${color2}` }}
+          >
             <div>
               <h3>STATS</h3>
             </div>
@@ -191,12 +211,14 @@ export const Detail: React.FC<DetailProps> = ({
               {detail.stats.map((e, i) => (
                 <div className="stat-detail">
                   <p key={i}>{e.stat.name}</p>
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    defaultValue={e.base_stat}
-                  />
+                  <div
+                    className="stat-range"
+                    key={i}
+                    style={{
+                      backgroundColor: `${color1}`,
+                      width: `${e.base_stat / 5}em`,
+                    }}
+                  ></div>
                   <small>{e.base_stat}</small>
                 </div>
               ))}

@@ -1,8 +1,13 @@
 #detail{
-    display: flex;
-    justify-content: center;
-    padding-top: 5em;
+    padding: 5em 0;
     color: var(--white);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 5em;
+    margin: 0 5em;
 }
 
 .text-container {
@@ -68,6 +73,11 @@
 .generations-column {
     display: flex;
     flex-direction: column;
+}
+
+.moves-container, .sprites-container {
+    margin: 0 5em;
+    margin-bottom: 5em;
 }
 
 .move-container {

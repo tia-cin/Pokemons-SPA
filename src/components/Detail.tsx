@@ -143,88 +143,90 @@ export const Detail: React.FC<DetailProps> = ({
     >
       {detail && (
         <div className="pokemon-container">
-          <div
-            className="about-container elem"
-            style={{ backgroundColor: `${color2}` }}
-          >
-            <div className="titles-container">
-              <div>
-                <h1 className="pokemon-name">
-                  {detail.name.toLocaleUpperCase()}
-                </h1>
-              </div>
-              <div className="pokemon-image">
-                <img
-                  src={
-                    detail.sprites.versions["generation-v"]["black-white"]
-                      .animated.front_default
-                  }
-                  alt={detail.name}
-                />
-              </div>
-            </div>
-            <div className="characteristics-container">
-              <div>
-                <h3>ABOUT</h3>
-              </div>
-              <div>
-                <Info
-                  text={[
-                    "Weight",
-                    "Height",
-                    "Base Experience",
-                    "Species",
-                    "Order",
-                  ]}
-                  small={[
-                    Math.round(detail.weight / 2.2046) + "kg",
-                    Math.round(detail.height / 3.2808) + "m",
-                    detail.base_experience,
-                    firstLetterUpperCase(detail.species.name),
-                    detail.order,
-                  ]}
-                />
-                <Info
-                  text={detail.abilities.map((a) => a.ability.name)}
-                  small={detail.abilities.map((a) => a.slot)}
-                />
-                <Info
-                  text={detail.types.map((t) => t.type.name)}
-                  small={detail.types.map((t) => t.slot)}
-                />
-                <Info
-                  text={["Items"]}
-                  small={
-                    detail.held_items.length > 1
-                      ? detail.held_items.map((i) => i.item.name)
-                      : ["None"]
-                  }
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="stats-container elem"
-            style={{ backgroundColor: `${color2}` }}
-          >
-            <div>
-              <h3>STATS</h3>
-            </div>
-            <div>
-              {detail.stats.map((e, i) => (
-                <div className="stat-detail">
-                  <p key={i}>{e.stat.name}</p>
-                  <div
-                    className="stat-range"
-                    key={i}
-                    style={{
-                      backgroundColor: `${color1}`,
-                      width: `${e.base_stat / 5}em`,
-                    }}
-                  ></div>
-                  <small>{e.base_stat}</small>
+          <div className="grid-container">
+            <div
+              className="about-container elem"
+              style={{ backgroundColor: `${color2}` }}
+            >
+              <div className="titles-container">
+                <div>
+                  <h1 className="pokemon-name">
+                    {detail.name.toLocaleUpperCase()}
+                  </h1>
                 </div>
-              ))}
+                <div className="pokemon-image">
+                  <img
+                    src={
+                      detail.sprites.versions["generation-v"]["black-white"]
+                        .animated.front_default
+                    }
+                    alt={detail.name}
+                  />
+                </div>
+              </div>
+              <div className="characteristics-container">
+                <div>
+                  <h3>ABOUT</h3>
+                </div>
+                <div>
+                  <Info
+                    text={[
+                      "Weight",
+                      "Height",
+                      "Base Experience",
+                      "Species",
+                      "Order",
+                    ]}
+                    small={[
+                      Math.round(detail.weight / 2.2046) + "kg",
+                      Math.round(detail.height / 3.2808) + "m",
+                      detail.base_experience,
+                      firstLetterUpperCase(detail.species.name),
+                      detail.order,
+                    ]}
+                  />
+                  <Info
+                    text={detail.abilities.map((a) => a.ability.name)}
+                    small={detail.abilities.map((a) => a.slot)}
+                  />
+                  <Info
+                    text={detail.types.map((t) => t.type.name)}
+                    small={detail.types.map((t) => t.slot)}
+                  />
+                  <Info
+                    text={["Items"]}
+                    small={
+                      detail.held_items.length > 1
+                        ? detail.held_items.map((i) => i.item.name)
+                        : ["None"]
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stats-container elem"
+              style={{ backgroundColor: `${color2}` }}
+            >
+              <div>
+                <h3>STATS</h3>
+              </div>
+              <div>
+                {detail.stats.map((e, i) => (
+                  <div className="stat-detail">
+                    <p key={i}>{e.stat.name}</p>
+                    <div
+                      className="stat-range"
+                      key={i}
+                      style={{
+                        backgroundColor: `${color1}`,
+                        width: `${e.base_stat / 5}em`,
+                      }}
+                    ></div>
+                    <small>{e.base_stat}</small>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div

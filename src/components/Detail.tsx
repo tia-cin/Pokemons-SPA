@@ -87,7 +87,7 @@ export const Detail: React.FC<DetailProps> = ({
           <div
             key={i}
             className="move-container"
-            style={{ backgroundColor: `${color2}` }}
+            style={{ backgroundColor: `${color1}` }}
           >
             <div className="move-name">
               <p>{firstLetterUpperCase(m.move.name)}</p>
@@ -150,9 +150,9 @@ export const Detail: React.FC<DetailProps> = ({
             >
               <div className="titles-container">
                 <div>
-                  <h1 className="pokemon-name">
+                  <h3 className="pokemon-name">
                     {detail.name.toLocaleUpperCase()}
-                  </h1>
+                  </h3>
                 </div>
                 <div className="pokemon-image">
                   <img
@@ -165,7 +165,7 @@ export const Detail: React.FC<DetailProps> = ({
                 </div>
               </div>
               <div className="characteristics-container">
-                <div>
+                <div className="titles-container">
                   <h3>ABOUT</h3>
                 </div>
                 <div>
@@ -208,7 +208,7 @@ export const Detail: React.FC<DetailProps> = ({
               className="stats-container elem"
               style={{ backgroundColor: `${color2}` }}
             >
-              <div>
+              <div className="titles-container">
                 <h3>STATS</h3>
               </div>
               <div>
@@ -233,7 +233,7 @@ export const Detail: React.FC<DetailProps> = ({
             className="moves-container elem"
             style={{ backgroundColor: `${color2}` }}
           >
-            <div>
+            <div className="titles-container">
               <h3>MOVES</h3>
             </div>
             <Moves data={detail.moves} />
@@ -242,7 +242,7 @@ export const Detail: React.FC<DetailProps> = ({
             className="sprites-container elem"
             style={{ backgroundColor: `${color2}` }}
           >
-            <div>
+            <div className="titles-container">
               <h3>SPRITES</h3>
             </div>
             <SpritesOthers data={detail.sprites.other} />

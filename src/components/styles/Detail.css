@@ -33,6 +33,9 @@
 }
 .elem {
     margin-bottom: 5em;
+    border-radius: .5em;
+    color: var(--black);
+    padding: 2em;
 }
 
 .elem h3, h5 {

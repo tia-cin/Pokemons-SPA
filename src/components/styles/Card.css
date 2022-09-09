@@ -4,9 +4,9 @@
         "image name name" 
         "image type type" 
         "button button button";
-        background-color: var(--dark);
-        border-radius: 2em;
-        padding: 2em;
+    background-color: var(--dark);
+    border-radius: 2em;
+    padding: 2em;
 }
 
 .image {

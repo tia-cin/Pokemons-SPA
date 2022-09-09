@@ -143,7 +143,10 @@ export const Detail: React.FC<DetailProps> = ({
     >
       {detail && (
         <div className="pokemon-container">
-          <div className="about-container elem">
+          <div
+            className="about-container elem"
+            style={{ backgroundColor: `${color2}` }}
+          >
             <div className="titles-container">
               <div>
                 <h1 className="pokemon-name">
@@ -224,13 +227,19 @@ export const Detail: React.FC<DetailProps> = ({
               ))}
             </div>
           </div>
-          <div className="moves-container elem">
+          <div
+            className="moves-container elem"
+            style={{ backgroundColor: `${color2}` }}
+          >
             <div>
               <h3>MOVES</h3>
             </div>
             <Moves data={detail.moves} />
           </div>
-          <div className="sprites-container elem">
+          <div
+            className="sprites-container elem"
+            style={{ backgroundColor: `${color2}` }}
+          >
             <div>
               <h3>SPRITES</h3>
             </div>

@@ -34,3 +34,7 @@
     border-radius: 2em;
     transform: translateY(-1.5em);
 }
+
+.landing-text-container {
+    margin: 5em;
+}

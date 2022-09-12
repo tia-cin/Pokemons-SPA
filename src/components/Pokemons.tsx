@@ -7,6 +7,8 @@ import { getPokemons } from "../redux/actions/getInfo";
 import { SearchBar } from "./SearchBar";
 import ReactPaginate from "react-paginate";
 import { Card } from "./Card";
+import loader from "../assets/pikachu-loader.gif";
+import { loadingAction } from "../redux/actions/actions";
 
 interface PokemonsProps {
   firstLetterUpperCase: (word: string) => string;
@@ -18,6 +20,7 @@ export const Pokemons: React.FC<PokemonsProps> = ({
   colors,
 }) => {
   const { pokemons } = useSelector((state: RootState) => state);
+  const { loading } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   // pagination
   const [page, setPage] = useState(0);
@@ -34,7 +37,8 @@ export const Pokemons: React.FC<PokemonsProps> = ({
 
   useEffect(() => {
     dispatch<any>(getPokemons());
-  }, [dispatch]);
+    dispatch<any>(loadingAction());
+  }, [dispatch, pokemons, loading]);
 
   console.log("pokemons", pokemons);
   return (
@@ -49,31 +53,38 @@ export const Pokemons: React.FC<PokemonsProps> = ({
       <div>
         <SearchBar />
       </div>
-      <div>
-        <div className="grid">
-          {displayItems.map((p, i) => (
-            <Card
-              colors={colors}
-              key={i}
-              pokemon={p}
-              firstLetterUpperCase={firstLetterUpperCase}
-            />
-          ))}
+      {loading ? (
+        <div>
+          <div className="grid">
+            {displayItems.map((p, i) => (
+              <Card
+                colors={colors}
+                key={i}
+                pokemon={p}
+                firstLetterUpperCase={firstLetterUpperCase}
+              />
+            ))}
+          </div>
+          <ReactPaginate
+            activeClassName="pagination-active"
+            disabledClassName="pagination-disable"
+            nextClassName="pages pagination-buttons"
+            pageClassName="pages"
+            previousClassName="pages pagination-buttons"
+            containerClassName="pagination"
+            breakClassName="pages break"
+            previousLabel={"<"}
+            nextLabel={">"}
+            pageCount={totalPages}
+            onPageChange={changePage}
+          />
         </div>
-        <ReactPaginate
-          activeClassName="pagination-active"
-          disabledClassName="pagination-disable"
-          nextClassName="pages pagination-buttons"
-          pageClassName="pages"
-          previousClassName="pages pagination-buttons"
-          containerClassName="pagination"
-          breakClassName="pages break"
-          previousLabel={"<"}
-          nextLabel={">"}
-          pageCount={totalPages}
-          onPageChange={changePage}
-        />
-      </div>
+      ) : (
+        <div>
+          <h4>Loading...</h4>
+          <img src={loader} alt="pikachu-loader" />
+        </div>
+      )}
     </div>
   );
 };

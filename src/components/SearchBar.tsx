@@ -1,7 +1,7 @@
 import "./styles/SearchBar.css";
 import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchPokemons } from "../redux/actions/actions";
+import { loadingAction, searchPokemons } from "../redux/actions/actions";
 
 export const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ export const SearchBar: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    dispatch<any>(loadingAction());
     dispatch<any>(searchPokemons(input));
   };
 

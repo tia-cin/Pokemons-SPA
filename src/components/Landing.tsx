@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const Landing: React.FC = () => {
   return (
     <div className="page-container flex-row jc-sb" id="landing">
-      <div className="item text-container">
+      <div className="item landing-text-container">
         <h1 className="big-titles">Pokemon Guide</h1>
         <p className="descriptions">Discover the Pokemon World</p>
         <Link to="/pokemons" className="links">

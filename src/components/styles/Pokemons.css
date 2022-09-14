@@ -15,38 +15,19 @@
 .grid {
     margin: 2em;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2em 10em;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2em 5em;
 }
 
 .pagination {
-    list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 3em 0;
-}
-.pagination-buttons  {
-    margin: 0 3em !important; 
-    font-weight: bold;
-}
-.pages {
-    background-color: var(--dark);
-    text-align: center;
-    margin: 0 .5em;
-    padding: .5em;
-    border-radius: 2em;
-    color: var(--white);
-}
-.pagination-disable {
-    background-color: transparent;
-}
-.pagination-active {
-    background-color: var(--light);
-    color: var(--black);
+    margin-bottom: 3em;
 }
 
-.break {
-    background-color: transparent;
-    color: var(--dark);
-    font-weight: bolder;
+.pagination-buttons  {
+    background-color: var(--dark);
+    font-size: 1em;
+    padding: .8em;
+    border-radius: 2em;
+    margin: 0 2em;
+    color: var(--white);
 }

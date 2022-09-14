@@ -70,12 +70,16 @@ export const Pokemons: React.FC<PokemonsProps> = ({
               />
             ))}
           </div>
-          <div>
-            <button onClick={prevPage}>Prev</button>
-            <button onClick={nextPage}>Next</button>
-          </div>
         </div>
       )}
+      <div className="pagination">
+        <button className="pagination-buttons" onClick={prevPage}>
+          Prev
+        </button>
+        <button className="pagination-buttons" onClick={nextPage}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import "./styles/Detail.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getDetailAction } from "../redux/actions/actions";
+import { getDetailAction, loadingAction } from "../redux/actions/actions";
 import { RootState } from "../redux/store";
 
 interface DetailProps {
@@ -17,6 +17,7 @@ export const Detail: React.FC<DetailProps> = ({
   const dispatch = useDispatch();
   const { id } = useParams<any>();
   const { detail } = useSelector((state: RootState) => state);
+  const { loading } = useSelector((state: RootState) => state);
 
   // palette
   let color1 = detail && colors[detail.types[0].type.name];
@@ -131,9 +132,10 @@ export const Detail: React.FC<DetailProps> = ({
 
   useEffect(() => {
     dispatch<any>(getDetailAction(id));
-  }, [dispatch, id]);
+    dispatch<any>(loadingAction());
+  }, [dispatch, id, loading]);
 
-  console.log(detail);
+  console.log(detail, loading);
 
   return (
     <div

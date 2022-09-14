@@ -53,7 +53,7 @@ export const Pokemons: React.FC<PokemonsProps> = ({
       <div>
         <SearchBar />
       </div>
-      {loading ? (
+      {displayItems.length > 1 ? (
         <div>
           <div className="grid">
             {displayItems.map((p, i) => (

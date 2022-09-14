@@ -9,6 +9,7 @@ import ReactPaginate from "react-paginate";
 import { Card } from "./Card";
 import loader from "../assets/pikachu-loader.gif";
 import { loadingAction } from "../redux/actions/actions";
+import { off } from "process";
 
 interface PokemonsProps {
   firstLetterUpperCase: (word: string) => string;
@@ -24,23 +25,22 @@ export const Pokemons: React.FC<PokemonsProps> = ({
   const dispatch = useDispatch();
   // pagination
   const [page, setPage] = useState(0);
-  const itemsPerPage = 9;
-  const numberOfItems = page * itemsPerPage;
-  const displayItems = pokemons.slice(
-    numberOfItems,
-    numberOfItems + itemsPerPage
-  );
-  const totalPages = Math.ceil(pokemons.length / itemsPerPage);
-  const changePage = (e: any): void => {
-    setPage(e.selected);
+  const prevPage = (): void => {
+    if (page >= 0) {
+      setPage(page - 20);
+      dispatch<any>(getPokemons(page));
+    }
+  };
+  const nextPage = (): void => {
+    setPage(page + 20);
+    dispatch<any>(getPokemons(page));
   };
 
   useEffect(() => {
-    dispatch<any>(getPokemons());
-    dispatch<any>(loadingAction());
-  }, [dispatch, pokemons, loading]);
+    dispatch<any>(getPokemons(page));
+  }, [dispatch, page]);
 
-  console.log("pokemons", pokemons);
+  console.log("pokemons", pokemons, "loader", loading);
   return (
     <div className="page-continer" id="pokemons">
       <div>
@@ -53,10 +53,15 @@ export const Pokemons: React.FC<PokemonsProps> = ({
       <div>
         <SearchBar />
       </div>
-      {displayItems.length > 1 ? (
+      {loading ? (
+        <div>
+          <h4>Loading...</h4>
+          <img src={loader} alt="pikachu-loader" />
+        </div>
+      ) : (
         <div>
           <div className="grid">
-            {displayItems.map((p, i) => (
+            {pokemons.map((p, i) => (
               <Card
                 colors={colors}
                 key={i}
@@ -65,24 +70,10 @@ export const Pokemons: React.FC<PokemonsProps> = ({
               />
             ))}
           </div>
-          <ReactPaginate
-            activeClassName="pagination-active"
-            disabledClassName="pagination-disable"
-            nextClassName="pages pagination-buttons"
-            pageClassName="pages"
-            previousClassName="pages pagination-buttons"
-            containerClassName="pagination"
-            breakClassName="pages break"
-            previousLabel={"<"}
-            nextLabel={">"}
-            pageCount={totalPages}
-            onPageChange={changePage}
-          />
-        </div>
-      ) : (
-        <div>
-          <h4>Loading...</h4>
-          <img src={loader} alt="pikachu-loader" />
+          <div>
+            <button onClick={prevPage}>Prev</button>
+            <button onClick={nextPage}>Next</button>
+          </div>
         </div>
       )}
     </div>

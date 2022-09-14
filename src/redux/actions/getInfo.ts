@@ -4,7 +4,9 @@ import { Actions, GET_POKEMONS, Pokemon, SET_ALERT } from "../types";
 
 const axios = require("axios");
 
-export const getPokemons = (): ThunkAction<void, RootState, null, Actions> => {
+export const getPokemons = (
+  offset: number
+): ThunkAction<void, RootState, null, Actions> => {
   return async (dispatch) => {
     try {
       dispatch({
@@ -13,7 +15,7 @@ export const getPokemons = (): ThunkAction<void, RootState, null, Actions> => {
       });
 
       const res = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
+        `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`
       );
 
       if (res.status !== 200) {
@@ -27,6 +29,8 @@ export const getPokemons = (): ThunkAction<void, RootState, null, Actions> => {
       const final = await axios.all(response);
 
       const all = final.map((f: any) => f.data);
+
+      console.log("action", all);
 
       dispatch({
         type: GET_POKEMONS,
